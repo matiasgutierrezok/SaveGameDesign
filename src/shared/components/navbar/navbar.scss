@@ -1,0 +1,45 @@
+.navbar{
+    background-color: $bright1;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    padding: 0 19px 0 35px;
+    justify-content: space-between;
+    .buttons{
+        display: none;
+    }
+}
+
+@media screen and (min-width:600px) {
+    .navbar{
+        padding: 0 30px 0 73px;
+    }
+}
+
+@media screen and (min-width:900px) {
+    .navbar{
+        height: 85px;
+        padding: 0 clamp(73px, 12vw, 140px);
+        #search-form{
+            max-width: clamp(156px, 21vw, 337px)
+        }
+        .logo{
+            width: 64px;
+            height: 64px;
+            margin-right: clamp(105px, 11vw, 210px);
+        }
+        .buttons{
+            display: flex;
+            width: 274px;
+            min-width: 233px;
+            justify-content: space-between;
+            button{
+                color: $text-color-high;
+                text-transform: none;
+            }
+        }
+        .hamburger-menu{
+            display: none;
+        }
+    }
+}

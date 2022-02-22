@@ -1,0 +1,16 @@
+import React from "react";
+import { Navbar } from "../../shared/components/navbar/navbar";
+import { BgImg } from "../../shared/components/bg-img/bg-img";
+import { CarouselFree } from "../../shared/components/carousel-free/carousel-free";
+
+export const HomeScr = () => {
+    return (
+        <div className="home">
+            <Navbar/>
+            <div className="home-body">
+            <BgImg/>
+            <CarouselFree/>
+            </div>
+        </div>
+    )
+}

@@ -1,0 +1,104 @@
+.bg-home{
+    position: relative;
+    margin-right: clamp(0px, 7vw, 140px);
+    .title{
+        position: absolute;
+        color: $text-color-high;
+        left: 38px;
+        top: 15px;
+        width: 210px;
+        font-family: $text-font-medium;
+    }
+    .textura-cont{
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        .textura{
+            width: 250px;
+            height: 161px;
+            filter: blur(4px);
+            -webkit-filter: blur(4px);
+        }
+    }
+    .img-cont{
+        position: absolute;
+        top: 49px;
+        right: 22px;
+        .img-coin{
+            width: 75px;
+            height: 75px;
+            position: absolute;
+            bottom: 97px;
+            left: 12px;
+        }
+        .img-pig{
+            width: 113px;
+            height: 113px;
+        }
+    }
+}
+//tablet
+@media screen and (min-width:600px) {
+    .bg-home{
+        margin-right: 60px;
+        margin-left: 60px;
+        .title{
+            margin-top: 52px;
+        }
+        .textura-cont{
+            .textura{
+                margin-top: 28px;
+                width: 420px;
+                height: 265px;
+            }
+        }
+        .img-cont{
+            top: 92px;
+            right: 19px;
+            .img-coin{
+                width: 125px;
+                height: 125px;
+                bottom: 166px;
+                left: 30px;
+            }
+            .img-pig{
+                width: 205px;
+                height: 190px;
+            }
+        }
+    }
+}
+//escritorio
+@media screen and (min-width:900px) {
+    .bg-home{
+        margin: 37px 140px 0 140px;
+        .title{
+            margin-top: 62px;
+            // margin-left: clamp(10px, 3vw, 138px);
+            font-size: clamp(14px, 2vw, 32px);
+            width: clamp(210px, 27vw, 419px);
+        }
+        .textura-cont{
+            .textura{
+                width: clamp(420px, 43vw, 524px);
+                height: clamp(265px, 27vw, 338px);
+            }
+        }
+        .img-cont{
+            all: unset;
+            position: absolute;
+            bottom: 0px;
+            right: clamp(19px, 5vw, 86px);
+            .img-coin{
+                width: clamp(125px, 10vw, 175px);
+                height: clamp(125px, 10vw, 175px);
+                bottom: clamp(166px, 19vw, 250px);
+                left: clamp(26px, 4vw, 57px);
+            }
+            .img-pig{
+                width: clamp(205px, 20vw, 305px);
+                height: clamp(190px, 20vw, 282px);
+            }
+        }
+    }
+}
