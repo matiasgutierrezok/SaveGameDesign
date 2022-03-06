@@ -16,6 +16,7 @@
     height: clamp(211px, 48vw, 286px);
     border-radius: 12px;
     overflow-x: scroll;
+    overflow-y: hidden;
     scrollbar-width: none;
     &::-webkit-scrollbar{
       display: none;
