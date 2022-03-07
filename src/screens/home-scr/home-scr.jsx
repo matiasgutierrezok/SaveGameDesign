@@ -8,8 +8,8 @@ export const HomeScr = () => {
         <div className="home">
             <Navbar/>
             <div className="home-body">
-            <BgImg/>
-            <CarouselFree/>
+                <BgImg/>
+                <CarouselFree/>
             </div>
         </div>
     )

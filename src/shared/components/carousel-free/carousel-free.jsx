@@ -231,6 +231,7 @@ export const CarouselFree = () => {
     const games = useRef({});
 
     const mouseDown = (e) => {
+        if (res2.length <= 2) return;
         setIsDown(true);
         setStartX(e.pageX - carousel.current.offsetLeft);
         setScrollLeft(carousel.current.scrollLeft);
@@ -319,34 +320,28 @@ export const CarouselFree = () => {
     }
 
     useEffect(() => {
-        if(!isPaused) {
-            const interval = setInterval(() =>{
-               reposition(-1);
-            }, 3000);
-
-            return() => {
-                if(interval) {
-                    clearInterval(interval);
+        if(res2.length > 2){
+            if(!isPaused) {
+                const interval = setInterval(() =>{
+                   reposition(-1);
+                }, 3000);
+    
+                return() => {
+                    if(interval) {
+                        clearInterval(interval);
+                    }
                 }
             }
         }
     })
 
     useEffect(() => {
-        carousel.current.scrollLeft = carousel.current.offsetWidth;
-        games.current.style.transition = 'none';
-        setTimeout(()=>{
-            games.current.style.transition = 'transform 0.3s';
-        }, 0)
+        if(res2.length > 2) carousel.current.scrollLeft = carousel.current.offsetWidth;
+            games.current.style.transition = 'none';
+            setTimeout(()=>{
+                games.current.style.transition = 'transform 0.3s';
+            }, 0)
     }, [])
-
-    const removeHover = (e) => { // posiblemente cambiar esto por una regla css
-        if(e.target.childElementCount === 0) e.target.parentElement.style.backgroundColor = '#e0e0e0';
-        else e.target.style.backgroundColor = '#e0e0e0';
-    }
-
-    // PENDIENTES:
-    // - casos en el que sean 1 o 2 items, anular el mover 'automáticamente' el carrusel, sacar los botones de antes y sgte, estilos de fullwidth en caso de 1.
 
     const handleTouchToImg = (e) => {
         if(e.nativeEvent.pointerType === 'mouse') return
@@ -358,13 +353,17 @@ export const CarouselFree = () => {
     const expandItem = (e) => {
         if (expanded) {
             shrinkItem();
-        };
-        reposition(0, e.target.parentElement.offsetLeft);
+        }
         e.target.parentElement.classList.add('expand-element');
-        e.target.parentElement.nextElementSibling.classList.add('retract-next-element');
+        e.target.parentElement.nextElementSibling?.classList.add('retract-next-element');
+        if(res2.length <= 2){
+            e.target.parentElement.nextElementSibling?.classList.add('two-items-retract');
+        } else {
+            reposition(0, e.target.parentElement.offsetLeft);
+        }
+        setIsPaused(true);
         setTimeout(() => {
             setExpanded(true);
-            setIsPaused(true);
         }, 500)
     }
     
@@ -372,13 +371,17 @@ export const CarouselFree = () => {
         if (expanded) {
             let i = 0;
             while(i < games.current.childNodes.length){
-                games.current.childNodes[i].classList.remove('expand-element', 'retract-next-element');
+                games.current.childNodes[i].classList.remove('expand-element', 'retract-next-element', 'two-items-expand', 'two-items-retract');
                 i++;
             };
             setExpanded(false);
             setIsPaused(false);
         }
     }
+
+    // PENDIENTES:
+    // titulo de gratis
+    // info al expandir el juego
 
     return (
         <div className="carousel-container">
@@ -387,34 +390,43 @@ export const CarouselFree = () => {
               ref={carousel}
               onScroll={()=> reposition()}
               onMouseEnter={() => setIsPaused(true)}
-              onMouseLeave={() => {setIsDown(false); setIsPaused(false)}}
+              onMouseLeave={() => {setIsDown(false); expanded? setIsPaused(true) : setIsPaused(false)}}
               onTouchStart={() => setIsPaused(true)}
               onTouchEnd={() => setIsPaused(false)}
             >
                 <div 
                     className={`game-container ${isDown? 'active' : ''}`}
+                    style={res2.length <= 2 ? {cursor:'auto'} : null}
                     ref={games}
                     onMouseDown={(e) => mouseDown(e)}
                     onMouseMove={(e) => mouseMove(e)}
                     onMouseUp={() => setIsDown(false)}
                 >
-                    {res2.map((obj) => {
+                    {res2.length === 1 ?
+                        <div className='game only-one-game'>
+                            <img draggable="false" src={res2[0].image} alt=""/>
+                        </div>
+                    : res2.map((obj, index) => {
                         return (
-                        <div className='game' key={obj.id}>
+                        <div className={`game ${res2.length <= 2 ? index === 0 ? 'first-item' : 'second-item' : ''}`} key={obj.id}>
                             <img onClick={(e)=>handleTouchToImg(e)} draggable="false" src={obj.image} alt=""/>
                             <Button variant="contained" id='btn' onClick={(e)=>expandItem(e)}>más info</Button>
                             <div className="divider"/>
-                            <IconButton id="exit" onClick={(e)=>shrinkItem(e)} onTouchStart={(e)=> removeHover(e)}><span className="material-icons md-24">close</span></IconButton>
+                            <IconButton id="exit" onClick={()=>shrinkItem()}><span className="material-icons md-24">close</span></IconButton>
                         </div>
                         )
                     })}
                 </div>
             </div>
-            <div className="buttons">
-                <IconButton id="prev" onClick={()=>reposition(1)} onTouchStart={(e)=> removeHover(e)}><span className="material-icons md-24">chevron_left</span></IconButton>
-                <IconButton id="next" onClick={()=>reposition(-1)} onTouchStart={(e)=> removeHover(e)}><span className="material-icons md-24">chevron_right</span>
-                </IconButton>
-            </div>
+            {
+                res2.length > 2 ? 
+                <div className="buttons" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => expanded? setIsPaused(true) : setIsPaused(false)}>
+                    <IconButton id="prev" onClick={()=>reposition(1)}><span className="material-icons md-24">chevron_left</span></IconButton>
+                    <IconButton id="next" onClick={()=>reposition(-1)}><span className="material-icons md-24">chevron_right</span>
+                    </IconButton>
+                </div>
+                : ''
+            }
         </div>
     )
 }
