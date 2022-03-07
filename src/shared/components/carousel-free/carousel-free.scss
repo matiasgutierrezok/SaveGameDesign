@@ -2,8 +2,10 @@
   position: absolute;
   color: black;
   background-color: $text-color-high;
-  &:hover{
-    background-color: $text-color-medium;
+  @media (pointer: fine){
+    &:hover{
+      background-color: $text-color-medium;
+    }
   }
 }
 
@@ -78,22 +80,48 @@
           top: 16px;
         }
       }
+      .first-item{
+        clip-path: polygon(0% 0%, 75% 0%, 25% 100%, 0% 100%);
+        .divider{display: none;}
+        #btn{
+          top: calc(30% - 20px);
+        }
+      }
+      .second-item{
+        clip-path: polygon(75% 0%, 100% 0%, 100% 100%, 25% 100%);
+        #btn{
+          top: calc(70% - 20px);
+        }
+        .divider{
+          display: unset;
+          clip-path: polygon(75% 0%, 76% 0%, 26% 100%, 25% 100%);
+        }
+        margin-left: -50%;
+      }
       .expand-element{
-        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+        clip-path: polygon(-1% 0, 150% 0, 100% 100%, -51% 100%);
         &:hover{
           img{filter: none;}
           #btn{display: none;}
         }
-        .divider{clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);}
+        .divider{clip-path: polygon(-1% 0, 0 0, -50% 100%, -51% 100%);}
         #exit{
           opacity: 1;
           pointer-events: all;
         }
       }
       .retract-next-element{
-        clip-path: polygon(50% 0%, 100% 0%, 50% 100%, 50% 100%);
-        .divider{
-          clip-path: polygon(50% 0%, 50% 0%, 50% 100%, 50% 100%);
+        clip-path: polygon(100% 0, 100% 0, 50% 100%, 50% 100%);
+      }
+      .two-items-retract{
+        clip-path: polygon(150% 0, 101% 0, 101% 100%, 101% 100%);
+      }
+      .only-one-game{
+        transition: unset;
+        clip-path: unset;
+        &:hover{
+          img{filter: none;}
+          #btn{display: none;}
         }
       }
     }
