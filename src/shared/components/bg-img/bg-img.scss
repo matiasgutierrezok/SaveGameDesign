@@ -37,7 +37,6 @@
         }
     }
 }
-//tablet
 @media screen and (min-width:600px) {
     .bg-home{
         margin-right: 60px;
@@ -68,13 +67,11 @@
         }
     }
 }
-//escritorio
 @media screen and (min-width:900px) {
     .bg-home{
         margin: 37px 140px 0 140px;
         .title{
             margin-top: 62px;
-            // margin-left: clamp(10px, 3vw, 138px);
             font-size: clamp(14px, 2vw, 32px);
             width: clamp(210px, 27vw, 419px);
         }

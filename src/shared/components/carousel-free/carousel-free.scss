@@ -54,6 +54,63 @@
           height: 100%;
           transition: filter 300ms;
         }
+        .game-details{
+          position: absolute;
+          bottom: 8%;
+          left: 8%;
+          width: 100%;
+          padding: 0 8px;
+          box-sizing: border-box;
+          font-size: 14px;
+          font-family: $text-font-medium;
+          color: $text-color-high;
+          .transparent-bg{
+            border-radius: 4px;
+            background: rgba(88, 88, 88, 0.5);
+            padding: 0 2px;
+          }
+          p{
+            max-width: 40%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin: 0;
+            word-break: break-all;
+          }
+          .details{
+            display: none;
+            margin-top: 8px;
+            justify-content: space-between;
+            max-width: 100%;
+            .game-data-container{
+              margin-right: 8px;
+              .game-exp{
+                display: flex;
+                .game-date{
+                  margin-left: 8px;
+                  background-color: $redbrand;
+                  border-radius: 4px;
+                  padding: 0 2px;
+                }
+              }
+              .game-store{
+                margin: 0;
+              }
+            }
+            .btn-container{
+              display: flex;
+              align-items: flex-end;
+              #btn-go{
+                font-size: 14px;
+                background-color: $redbrand;
+                color: $text-color-high;
+                display: flex;
+                align-items: center;
+                text-transform: capitalize;
+                white-space: nowrap
+              }
+            }
+          }
+        }
         #btn{
           display: none;
           position: absolute;
@@ -86,6 +143,12 @@
         #btn{
           top: calc(30% - 20px);
         }
+        .game-details{
+          left: 0;
+          p{
+            max-width: 25%;
+          }
+        }
       }
       .second-item{
         clip-path: polygon(75% 0%, 100% 0%, 100% 100%, 25% 100%);
@@ -97,6 +160,12 @@
           clip-path: polygon(75% 0%, 76% 0%, 26% 100%, 25% 100%);
         }
         margin-left: -50%;
+        .game-details{
+          left: 35%;
+          p{
+            max-width: 50%;
+          }
+        }
       }
       .expand-element{
         clip-path: polygon(-1% 0, 150% 0, 100% 100%, -51% 100%);
@@ -108,6 +177,24 @@
         #exit{
           opacity: 1;
           pointer-events: all;
+        }
+        .game-details{
+          left: 0;
+          bottom: 8px;
+          max-width: 100%;
+          .transparent-bg{
+            backdrop-filter: blur(2px);
+            max-width: max-content;
+          }
+          p{
+            white-space: initial;
+            max-width: max-content;
+            min-width: 24%;
+            margin-bottom: 8px;
+          }
+          .details{
+            display: flex;
+          }
         }
       }
       .retract-next-element{
@@ -122,6 +209,9 @@
         &:hover{
           img{filter: none;}
           #btn{display: none;}
+        }
+        .game-details{
+          .details{display: flex}
         }
       }
     }
@@ -143,6 +233,11 @@
       right: 16px;
     }
   }
+  .color-title{
+    position: absolute;
+    top: 12px;
+    left: 12px;
+  }
 }
 
 @media screen and (min-width:600px) {
@@ -155,6 +250,20 @@
     margin: 0 clamp(60px, 8vw, 140px);
     .main{
       height: clamp(286px, 32vw, 467px);
+      .game-container{
+        .game{
+          .game-details{
+            padding: 2px 8px;
+            .game-title{
+              font-size: clamp(16px, 2vw, 24px);
+            }
+          }
+        }
+      }
+    }
+    .color-title{
+      top: 20px;
+      left: 20px;
     }
   }
 }
