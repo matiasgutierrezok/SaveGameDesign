@@ -1,0 +1,126 @@
+.game {
+    display: inline-flex;
+    background: $bright1;
+    width: 100%;
+    height: 100%;
+    margin-right: -50%;
+    position: relative;
+    transition: clip-path 300ms;
+    clip-path: polygon(50% 0%, 100% 0%, 50% 100%, 0% 100%);
+    @media (pointer: fine){
+        &:hover{
+            img{
+                filter: gray;
+                -webkit-filter: grayscale(1);
+            }
+            #btn{display: block}
+        }
+    }
+    img{
+      width: 100%;
+      height: 100%;
+      transition: filter 300ms;
+    }
+    .game-details{
+        position: absolute;
+        bottom: 8%;
+        left: 8%;
+        width: 100%;
+        padding: 0 8px;
+        box-sizing: border-box;
+        font-size: clamp(14px, 2vw, 24px);
+        font-family: $text-font-medium;
+        color: $text-color-high;
+        .transparent-bg{
+            border-radius: 4px;
+            background: rgba(88, 88, 88, 0.5);
+            padding: 0 2px;
+        }
+        p{
+            max-width: fit-content;
+            width: 40%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin: 0;
+            word-break: break-all;
+        }
+        .details{
+            display: none;
+            margin-top: 8px;
+            justify-content: space-between;
+            max-width: 100%;
+            .game-data-container{
+                margin-right: 8px;
+                .game-exp{
+                    display: flex;
+                    .game-date{
+                        margin-left: clamp(8px, 2vw, 16px);
+                        background-color: $redbrand;
+                        border-radius: 4px;
+                        padding: 0 2px;
+                    }
+                }
+                .store-icons{
+                    display: flex;
+                    align-items: center;
+                }
+                .game-platform-store{
+                    p{margin-bottom: 0}
+                }
+                .game-store{
+                    margin: 0;
+                    &:last-child{margin-bottom: 0}
+                }
+                span{
+                    font-size: 20px;
+                    padding: 4px;
+                    margin-right: clamp(8px, 2vw, 16px);
+                }
+                img{
+                    color: $text-color-high;
+                    width: 20px;
+                    height: 20px;
+                    padding: 4px;
+                }
+            }
+            .btn-container{
+                display: flex;
+                align-items: flex-end;
+                #btn-go{
+                    font-size: 14px;
+                    background-color: $redbrand;
+                    color: $text-color-high;
+                    display: flex;
+                    align-items: center;
+                    text-transform: capitalize;
+                    white-space: nowrap
+                }
+            }
+        }
+    }
+    #btn{
+        display: none;
+        position: absolute;
+        top: calc(50% - 20px);
+        left: calc(50% - 50px);
+        background-color: $redbrand;
+        color: $text-color-high;
+        font-family: $text-font-medium;
+    }
+    .divider{
+        position: absolute;
+        background-color: $redbrand;
+        width: 100%;
+        height: 100%;
+        transition: clip-path 300ms;
+        clip-path: polygon(50% 0%, 51% 0%, 1% 100%, 0% 100%);
+    }
+    #exit{
+        transition: opacity 300ms;
+        opacity: 0;
+        pointer-events: none;
+        @include theme($carousel-btn: DarkBtn);
+        right: 16px;
+        top: 16px;
+    }
+}
