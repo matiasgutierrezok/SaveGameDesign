@@ -21,6 +21,7 @@
     overflow-x: scroll;
     overflow-y: hidden;
     scrollbar-width: none;
+    background-color: $bright1;
     &::-webkit-scrollbar{
       display: none;
     }
@@ -135,6 +136,35 @@
     top: 12px;
     left: 12px;
   }
+  .loading{
+    position: relative;
+    width: 100%;
+    height: clamp(211px, 48vw, 286px);
+    background-color: $bright1;
+    border-radius: 12px;
+    overflow: hidden;
+    .shimmer-wrapper{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      animation: loading 2s infinite;
+      .shimmer{
+        width: 40%;
+        height: 100%;
+        background: $bright2;
+        transform: skewX(-20deg);
+        box-shadow: 0 0 30px 30px $bright2;
+      }
+    }
+  }
+}
+
+@keyframes loading {
+  0% {transform: translateX(-150%)}
+  50% {transform: translateX(-70%)}
+  100% {transform: translateX(130%)}
 }
 
 @media screen and (min-width:600px) {
@@ -180,6 +210,17 @@
               font-size: 20px;
               span{font-size: 24px}
             }
+            .details{
+              .game-data-container{
+                span{
+                  font-size: 39px;
+                }
+                img{
+                  width: 39px;
+                  height: 39px;
+                }
+              }
+            }
           }
         }
       }
@@ -193,5 +234,6 @@
       top: 20px;
       left: 20px;
     }
+    .loading{height: clamp(286px, 32vw, 467px)}
   }
 }
