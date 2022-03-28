@@ -244,11 +244,40 @@ export const CarouselFree = () => {
     const [isDown, setIsDown] = useState(false);
     const [startX, setStartX] = useState();
     const [scrollLeft, setScrollLeft] = useState(0);
+    const [gamesData, setGamesData] = useState([]);
     
     const carousel = useRef(null);
     const games = useRef({});
     const interval = useRef(null);
     const expanded = useRef(false);
+    
+    
+    const fetchGiveAways = async () => {
+        const options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Host': 'gamerpower.p.rapidapi.com',
+                'X-RapidAPI-Key': 'dbcf3b4263msh59ffd3e6865769cp1c18fcjsn3777366e589d'
+            }
+        };
+        try{
+            const data = await fetch('https://gamerpower.p.rapidapi.com/api/giveaways?type=game', options)
+                .then((response) => response.json())
+                .then(response => {
+                    console.log(response, 'la data que trae de la API', response.length, response.length - 3);
+                    let data = response;
+                    if(data.length >= 3 && data.length <= 6) {
+                        let index = data.length;
+                        for(let i = 0; i < index; i++){
+                            data.push(data[i]);
+                        }
+                    };
+                    setGamesData(data);
+                })
+        } catch(err){
+            console.error(err)
+        }
+    }
 
     const mouseDown = (e) => {
         if (res2.length <= 2 || window.matchMedia('(pointer: coarse)').matches) return;
@@ -360,6 +389,7 @@ export const CarouselFree = () => {
     }
 
     useEffect(() => {
+        // fetchGiveAways();
         if(res2.length > 2) carousel.current.scrollLeft = carousel.current.offsetWidth;
         games.current.style.transition = 'none';
         setTimeout(()=>{
@@ -397,9 +427,9 @@ export const CarouselFree = () => {
     }
 
     // PENDIENTES:
-    // llamar a la data de la api
+    // llamar la data en un componente padre y tener el condicional ahí, para que mientras no esté la data, poner un loading ?
+    // llamar la data y en loading acá. ver la manera de ejecutar el useEffect (posiblemente con un [gamesData] (? )
     // css para cuando hay un solo resultado
-    // pushear resultados en el caso que sean entre 3 y 6
 
     return (
         <div className="carousel-container">
@@ -408,7 +438,7 @@ export const CarouselFree = () => {
               style={{background: 'white'}}
               ref={carousel}
               onScroll={()=> reposition()}
-              onMouseLeave={expanded.current? null : isDown? () => setIsDown(false) : null}
+              onMouseLeave={expanded.current? null : isDown? () => {setIsDown(false); autoMove(true)} : null}
               onTouchStart={() => autoMove(false)}
               onTouchEnd={() => autoMove(true)}
             >
