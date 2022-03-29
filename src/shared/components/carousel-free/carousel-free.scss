@@ -2,6 +2,7 @@
   position: absolute;
   color: black;
   background-color: $text-color-high;
+  padding: 4px;
   @media (pointer: fine){
     &:hover{
       background-color: $text-color-medium;
@@ -20,141 +21,207 @@
     overflow-x: scroll;
     overflow-y: hidden;
     scrollbar-width: none;
-    &::-webkit-scrollbar{
-      display: none;
-    }
+    background-color: $bright1;
+    &::-webkit-scrollbar {display: none}
     .game-container {
       height: 100%;
       white-space: nowrap;
       user-select: none;
       transition: transform 0.3s;
       cursor: grab;
-      .game {
-        display: inline-flex;
-        background: $bright1;
-        width: 100%;
-        height: 100%;
-        margin-right: -50%;
-        position: relative;
-        transition: clip-path 1s;
-        clip-path: polygon(50% 0%, 100% 0%, 50% 100%, 0% 100%);
-        @media (pointer: fine){
-          &:hover{
-            img{
-              filter: gray;
-              -webkit-filter: grayscale(1);
-            }
-            #btn{
-              display: block;
-            }
-          }
-        }
-        img{
-          width: 100%;
-          height: 100%;
-          transition: filter 300ms;
-        }
-        #btn{
-          display: none;
-          position: absolute;
-          top: calc(50% - 20px);
-          left: calc(50% - 50px);
-          background-color: $redbrand;
-          color: $text-color-high;
-          font-family: $text-font-medium;
-        }
-        .divider{
-          position: absolute;
-          background-color: $redbrand;
-          width: 100%;
-          height: 100%;
-          transition: clip-path 1s;
-          clip-path: polygon(50% 0%, 51% 0%, 1% 100%, 0% 100%);
-        }
-        #exit{
-          transition: opacity 300ms;
-          opacity: 0;
-          pointer-events: none;
-          @include theme($carousel-btn: DarkBtn);
-          right: 16px;
-          top: 16px;
-        }
-      }
-      .first-item{
+      .first-item {
         clip-path: polygon(0% 0%, 75% 0%, 25% 100%, 0% 100%);
-        .divider{display: none;}
-        #btn{
-          top: calc(30% - 20px);
+        .divider {display: none}
+        #btn {top: calc(30% - 20px)}
+        .game-details {
+          left: 0;
+          p {width: 25%}
         }
       }
-      .second-item{
+      .second-item {
         clip-path: polygon(75% 0%, 100% 0%, 100% 100%, 25% 100%);
-        #btn{
-          top: calc(70% - 20px);
-        }
-        .divider{
+        margin-left: -50%;
+        #btn {top: calc(70% - 20px)}
+        .divider {
           display: unset;
           clip-path: polygon(75% 0%, 76% 0%, 26% 100%, 25% 100%);
         }
-        margin-left: -50%;
-      }
-      .expand-element{
-        clip-path: polygon(-1% 0, 150% 0, 100% 100%, -51% 100%);
-        &:hover{
-          img{filter: none;}
-          #btn{display: none;}
+        .game-details {
+          left: 35%;
+          p {width: 50%}
         }
-        .divider{clip-path: polygon(-1% 0, 0 0, -50% 100%, -51% 100%);}
-        #exit{
+      }
+      .expand-element {
+        clip-path: polygon(-1% 0, 150% 0, 100% 100%, -51% 100%);
+        &:hover {
+          img {filter: none}
+          #btn {display: none}
+        }
+        .divider {clip-path: polygon(-1% 0, 0 0, -50% 100%, -51% 100%)}
+        #exit {
           opacity: 1;
           pointer-events: all;
+          span {font-size: 20px}
+        }
+        .game-details {
+          left: 0;
+          bottom: 8px;
+          max-width: 100%;
+          .transparent-bg {
+            backdrop-filter: blur(2px);
+            max-width: max-content;
+          }
+          p {
+            white-space: initial;
+            width: auto;
+            max-width: max-content;
+            min-width: min-content;
+            margin-bottom: 8px;
+          }
+          .details {display: flex}
         }
       }
-      .retract-next-element{
-        clip-path: polygon(100% 0, 100% 0, 50% 100%, 50% 100%);
-      }
-      .two-items-retract{
-        clip-path: polygon(150% 0, 101% 0, 101% 100%, 101% 100%);
-      }
-      .only-one-game{
-        transition: unset;
-        clip-path: unset;
-        &:hover{
-          img{filter: none;}
-          #btn{display: none;}
-        }
-      }
+      .retract-next-element {clip-path: polygon(100% 0, 100% 0, 50% 100%, 50% 100%)}
+      .two-items-retract {clip-path: polygon(150% 0, 101% 0, 101% 100%, 101% 100%)}
     }
     .active {
       cursor: grabbing;
       cursor: -webkit-grabbing;
     }
   }
-  .buttons{
+  .buttons {
     position: absolute;
     top: calc(50% - 20px);
     width: 100%;
-    #prev{
+    span {font-size: 20px}
+    #prev {
       @include theme($carousel-btn: DarkBtn);
       left: 16px;
     }
-    #next{
+    #next {
       @include theme($carousel-btn: DarkBtn);
       right: 16px;
     }
   }
+  .color-title {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+  }
+  .loading {
+    position: relative;
+    width: 100%;
+    height: clamp(211px, 48vw, 286px);
+    background-color: $bright1;
+    border-radius: 12px;
+    overflow: hidden;
+    .shimmer-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      animation: loading 2s infinite;
+      .shimmer {
+        width: 40%;
+        height: 100%;
+        background: $bright2;
+        transform: skewX(-20deg);
+        box-shadow: 0 0 30px 30px $bright2;
+      }
+    }
+  }
+}
+
+@keyframes loading {
+  0% {transform: translateX(-150%)}
+  50% {transform: translateX(-70%)}
+  100% {transform: translateX(130%)}
 }
 
 @media screen and (min-width:600px) {
-  .carousel-container{
+  .carousel-container {
     margin: 0 clamp(30px, 7vw, 60px);
+    .main {
+      .game-container {
+        .game {
+          .game-details {
+            .details {
+              justify-content: flex-start;
+              .game-data-container {margin-right: 32px}
+            }
+          }
+        }
+      }
+    }
   }
 }
+
 @media screen and (min-width:900px) {
-  .carousel-container{
+  .carousel-container {
     margin: 0 clamp(60px, 8vw, 140px);
-    .main{
+    .main {
       height: clamp(286px, 32vw, 467px);
+      .game-container {
+        .game {
+          .game-details {
+            padding: 2px 8px;
+            .game-title {font-size: clamp(16px, 2vw, 24px)}
+          }
+        }
+        .expand-element {
+          #exit {
+            padding: 8px;
+            span {font-size: 24px}
+          }
+          .game-details {
+            padding: 0 16px;
+            p {margin-bottom: 16px}
+            #btn-go {
+              font-size: 20px;
+              span {font-size: 24px}
+            }
+            .details {
+              .game-data-container {
+                span {font-size: 39px}
+                img {
+                  width: 39px;
+                  height: 39px;
+                }
+              }
+            }
+          }
+        }
+        .only-one-game {
+          .game-details {
+          padding: 0 16px;
+            p {margin-bottom: 16px}
+            #btn-go {
+              font-size: 20px;
+              span {font-size: 24px}
+            }
+            .details {
+              .game-data-container {
+                span {font-size: 39px}
+                img {
+                  width: 39px;
+                  height: 39px;
+                }
+              }
+            }
+          }
+        }
+      }
     }
+    .buttons {
+      span {font-size: 24px}
+      #prev {padding: 8px}
+      #next {padding: 8px}
+    }
+    .color-title {
+      top: 20px;
+      left: 20px;
+    }
+    .loading {height: clamp(286px, 32vw, 467px)}
   }
 }
