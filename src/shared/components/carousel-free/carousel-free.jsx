@@ -201,45 +201,37 @@ export const CarouselFree = () => {
         )
     }
 
-    // PENDIENTES:
-    // css para cuando hay un solo resultado
-
     return (
         <div className="carousel-container">
             { isLoading ?
                 <Loading/>
                 : <>
                     <div 
-                    className="main"
-                    ref={carousel}
-                    onScroll={()=> reposition()}
-                    onMouseLeave={expanded.current? null : isDown? () => {setIsDown(false); autoMove(true)} : null}
-                    onTouchStart={() => autoMove(false)}
-                    onTouchEnd={() => autoMove(true)}
+                      className="main"
+                      ref={carousel}
+                      onScroll={()=> reposition()}
+                      onMouseLeave={expanded.current? null : isDown? () => {setIsDown(false); autoMove(true)} : null}
+                      onTouchStart={() => autoMove(false)}
+                      onTouchEnd={() => autoMove(true)}
                     >
                         <div 
-                            className={`game-container ${isDown? 'active' : ''}`}
-                            style={gamesData.length <= 2 ? {cursor:'auto'} : null}
-                            ref={games}
-                            onMouseDown={(e) => mouseDown(e)}
-                            onMouseMove={(e) => mouseMove(e)}
-                            onMouseUp={(e) => mouseUp(e)}
+                          className={`game-container ${isDown? 'active' : ''}`}
+                          style={gamesData.length <= 2 ? {cursor:'auto'} : null}
+                          ref={games}
+                          onMouseDown={(e) => mouseDown(e)}
+                          onMouseMove={(e) => mouseMove(e)}
+                          onMouseUp={(e) => mouseUp(e)}
                         >
                             {gamesData.length === 1 ?
-                                <div className='game only-one-game'>
-                                    <img draggable="false" src={gamesData[0].image} alt=""/>
-                                    {
-                                    // acá va la data
-                                    }                            
-                                </div>
+                                <FreeGame className='only-one-game' obj={gamesData}/>
                             : gamesData.map((obj, index) => {
                                 return (
                                     <FreeGame
-                                    className={`${gamesData.length <= 2 ? index === 0 ? 'first-item' : 'second-item' : ''}`}
-                                    obj={obj}
-                                    expandItem={expandItem}
-                                    shrinkItem={shrinkItem}
-                                    key={obj.id}
+                                      className={`${gamesData.length <= 2 ? index === 0 ? 'first-item' : 'second-item' : ''}`}
+                                      obj={obj}
+                                      expandItem={expandItem}
+                                      shrinkItem={shrinkItem}
+                                      key={obj.id}
                                     />
                                 )
                             })}
@@ -250,7 +242,7 @@ export const CarouselFree = () => {
                             <IconButton id="prev" onClick={()=>reposition(1)}><span className="material-icons md-24">chevron_left</span></IconButton>
                             <IconButton id="next" onClick={()=>reposition(-1)}><span className="material-icons md-24">chevron_right</span></IconButton>
                         </div>
-                        : ''
+                    : ''
                     }
                     <ColorTitle label='Juegos gratis'/>
                 </>

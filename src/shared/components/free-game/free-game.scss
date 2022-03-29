@@ -124,3 +124,30 @@
         top: 16px;
     }
 }
+.only-one-game{
+    transition: unset;
+    clip-path: unset;
+    &:hover{
+        img{filter: none;}
+        #btn{display: none;}
+    }
+    .divider{clip-path: polygon(-1% 0, 0 0, -50% 100%, -51% 100%);}
+    #exit{display: none}
+    .game-details{
+        left: 0;
+        bottom: 8px;
+        max-width: 100%;
+        .transparent-bg{
+          backdrop-filter: blur(2px);
+          max-width: max-content;
+        }
+        p{
+          white-space: initial;
+          width: auto;
+          max-width: max-content;
+          min-width: min-content;
+          margin-bottom: 8px;
+        }
+        .details{display: flex}
+    }
+}
