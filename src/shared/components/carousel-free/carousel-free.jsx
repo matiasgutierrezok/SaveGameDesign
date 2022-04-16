@@ -244,7 +244,7 @@ export const CarouselFree = () => {
                         </div>
                     : ''
                     }
-                    <ColorTitle label='Juegos gratis'/>
+                    <ColorTitle label='Juegos gratis' shadow={true}/>
                 </>
             }
         </div>

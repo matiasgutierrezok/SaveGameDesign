@@ -49,7 +49,7 @@ export const FreeGame = (props) => {
     }
 
     return (
-        <div className={`game ${props.className}`}>
+        <div className={`free-game ${props.className}`}>
             <img onClick={props.obj?.length !== 1 ? (e)=>handleTouchToImg(e) : null} draggable="false" src={props.obj.image} alt=""/>
             <Button variant="contained" id='btn' onClick={(e)=>props.expandItem(e)}>más info</Button>
             <div className="divider"/>
