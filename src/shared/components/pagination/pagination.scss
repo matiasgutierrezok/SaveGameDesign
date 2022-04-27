@@ -1,0 +1,40 @@
+.pagination-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 clamp(19px, 5.1vw, 60px);
+    font-size: 12px;
+    .pagenumber-container{
+        display: none;
+        .pagenumber{
+            width: 24px;
+            height: 24px;
+            font-family: $text-font-medium;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: $bright2;
+            color: $text-color-high;
+            margin: 0 4px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .pagenumber-container-big{padding: 0 6px}
+        .border{
+            box-sizing: border-box;
+            border: 2px solid $redbrand;
+        }
+        .ellipsis{cursor: default;}
+    }
+    @media screen and (min-width:600px) {
+        justify-content: center;
+        margin: 0 158px;
+        .btn-container{
+            #btn-cmp{margin-left: 12px;}
+            #btn-cmp-left{margin-right: 12px;}
+        }
+        .pagenumber-container{
+            display: flex;
+        }
+    }
+}

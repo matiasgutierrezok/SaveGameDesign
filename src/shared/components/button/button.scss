@@ -1,0 +1,28 @@
+.btn-container{
+    @mixin theme($CustomButton: Btn) {
+        font-size: 14px;
+        font-family: $text-font-regular;
+        color: $text-color-high;
+        background-color: $redbrand;
+        display: flex;
+        align-items: center;
+        text-transform: capitalize;
+        white-space: nowrap
+    }
+    >#btn-cmp{
+        line-height: unset;
+        @include theme($CustomButton: Btn);
+        .MuiButton-iconSizeMedium{
+            margin-right: 0px;
+            margin-left: 6px;
+        }
+    }
+    >#btn-cmp-left{
+        @include theme($CustomButton: Btn);
+        flex-direction: row-reverse;
+        .MuiButton-iconSizeMedium{
+            margin-right: 6px;
+            margin-left: 0;
+        }
+    }
+}
