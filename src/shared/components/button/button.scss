@@ -10,7 +10,6 @@
         white-space: nowrap
     }
     >#btn-cmp{
-        line-height: unset;
         @include theme($CustomButton: Btn);
         .MuiButton-iconSizeMedium{
             margin-right: 0px;
@@ -23,6 +22,16 @@
         .MuiButton-iconSizeMedium{
             margin-right: 6px;
             margin-left: 0;
+        }
+    }
+    @media screen and (min-width: 1024px){
+        >#btn-cmp{
+            font-size: 20px;
+            span{font-size: 24px}
+        }
+        >#btn-cmp-left{
+            font-size: 20px;
+            span{font-size: 24px}
         }
     }
 }

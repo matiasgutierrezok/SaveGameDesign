@@ -45,13 +45,8 @@ export const Deals = () => {
         fetchDealsList();
     }, [])
 
-    // (agrandar tamaño de letras y distancia hasta wordbreak en cards en +900)
-    // agregar números al paginado y hacerlo responsive (agrandar tamaño en +900)
-    // funciones para que los botones y números funcionen
     // loading component
     // pop up de filtros
-    // bug de border en el search
-    // ocultar botón para otras vistas
     // cambiar el botón en el carrusel por el componente button
     // espacios de margen horizontal en carrusel, navbar y bgimg cuando width > 1920
 

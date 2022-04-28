@@ -17,14 +17,15 @@
         }
     }
     .data-container{
-        width: 100%;
+        width: calc(100% + 2px);
         display: flex;
         position: absolute;
-        bottom: 0;
+        bottom: -1px;
+        left: -1px;
         .data{
             width: 100%;
             z-index: 2;
-            padding: 8px;
+            padding: 8px 9px 9px;
             box-sizing: border-box;
             p{
                 margin: unset;
@@ -77,5 +78,25 @@
             height: 100%;
             position: absolute;
         }
+    }
+    @media screen and (min-width:900px) {
+        .data-container{
+            .data{
+                padding: 8px 16px 16px;
+                p{font-size: clamp(12px, 2vw, 24px);}
+                .title{max-height: 160px;}
+                .store-price{
+                    .store{max-width: 170px;}
+                }
+            }
+        }
+    }
+    @media screen and (min-width:1300px){
+        .data-container{
+            .data{
+                p{font-size: clamp(12px, 1.3vw, 24px);}
+            }
+        }
+    
     }
 }

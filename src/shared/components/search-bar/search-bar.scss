@@ -3,17 +3,16 @@
     max-height: 34px;
     background-color: $dark1;
     border-radius: 8px;
+    border: 2px solid transparent;
     div{
         margin-left: 0;
         font-size: 14px;
         max-width: clamp(128px, 37vw, 309px);
     }
-    &:hover{
-        border: 2px solid $bright2;
+    @media (pointer:fine){
+        &:hover{border: 2px solid $bright2}
     }
-    &:focus-within{
-        border: 2px solid $redbrand;
-    }
+    &:focus-within{border: 2px solid $redbrand}
     #search-icon{
         padding: 0;
         margin: 0 0 0 4px;
@@ -33,10 +32,7 @@
         margin: 0 4px 0 4px;
         cursor: pointer;
     }
-}
-
-@media screen and (min-width:900px) {
-    #search-form{
+    @media screen and (min-width:900px) {
         div{
             font-size: 16px;
             max-width: 309px;

@@ -28,13 +28,28 @@
     }
     @media screen and (min-width:600px) {
         justify-content: center;
-        margin: 0 158px;
+        margin: 0;
         .btn-container{
             #btn-cmp{margin-left: 12px;}
             #btn-cmp-left{margin-right: 12px;}
         }
         .pagenumber-container{
             display: flex;
+        }
+    }
+    @media screen and (min-width:1024px) {
+        font-size: 20px;
+        .pagenumber-container{
+            .pagenumber{
+                width: 32px;
+                height: 32px;
+                margin: 0 8px;
+            }
+            .pagenumber-container-big{padding: 0 10px}
+            .border{
+                box-sizing: content-box;
+                height: 28px;
+            }
         }
     }
 }

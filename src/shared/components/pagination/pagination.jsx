@@ -60,7 +60,7 @@ export const Pagination = ({handlePrevious, handleNext, handleClick, lastPage, a
               direction='left'
             />
             <div className="pagenumber-container">
-                {generatePageNumber()}
+                {lastPage? generatePageNumber() : ''}
             </div>
             <CustomButton
               handleClick={e => handleNext? handleNext() : e.preventDefault}
