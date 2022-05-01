@@ -41,8 +41,37 @@
             gap: clamp(10px, 2.7vw, 24px);
             grid-template-columns: repeat(auto-fill, minmax(clamp(156px, 21vw, 200px), 1fr));
             grid-auto-rows: 246px;
+            >.loading{
+                position: relative;
+                width: 100%;
+                height: 100%;
+                background-color: $bright2;
+                border-radius: 12px;
+                overflow: hidden;
+                .shimmer-wrapper {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    animation: loading 2s infinite;
+                    .shimmer {
+                      width: 40%;
+                      height: 100%;
+                      background: $bright3;
+                      transform: skewX(-20deg);
+                      box-shadow: 0 0 30px 30px $bright3;
+                    }
+                }
+            }
+            @keyframes loading {
+                0% {transform: translateX(-150%)}
+                50% {transform: translateX(-85%)}
+                100% {transform: translateX(150%)}
+            }
             @media screen and (min-width:555px) and (max-width:1299px) {
                 .deal-game:last-child{display: none}
+                .loading:last-child{display: none}
             }
         }
     }

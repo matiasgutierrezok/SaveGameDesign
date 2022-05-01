@@ -19,7 +19,7 @@ export const Pagination = ({handlePrevious, handleNext, handleClick, lastPage, a
         else if (actualPage === lastPage) for (let i = actualPage - 4; i <= lastPage; i++) {arr.push(i)}
         else if (actualPage === lastPage - 1) for (let i = actualPage - 4; i <= lastPage; i++) {arr.push(i)}
         else if (actualPage === lastPage - 2) for (let i = actualPage - 3; i <= lastPage; i++) {arr.push(i)}
-        else for (let i = actualPage - 2; i <= actualPage + 2; i++) {arr.push(i); console.log(i, actualPage, i <= actualPage + 2)};
+        else for (let i = actualPage - 2; i <= actualPage + 2; i++) {arr.push(i)};
         return(
             <>
                 {arr.includes(0)? ''

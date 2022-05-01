@@ -4,13 +4,23 @@ import { DealGame } from "../deal-game/deal-game";
 import SearchBar from "../search-bar/search-bar";
 import { Pagination } from "../pagination/pagination";
 
+export const Loading = () => {
+    return(
+        <div className='loading'>
+            <div className="shimmer-wrapper">
+                <div className="shimmer"/>
+            </div>
+        </div>
+    )
+}
+
 export const Deals = () => {
     const [dealList, setDealList] = useState()
+    const [isLoading, setIsLoading] = useState({boolean:false, array:[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]})
 
     const fetchDealsList = async (value) => {
-        const options = {
-            method: 'GET'
-        };
+        setIsLoading({boolean: true, array: isLoading.array});
+        const options = {method: 'GET'};
         const parameters = {
             pageNumber: value? value : 0,
             pageSize: '10',
@@ -23,6 +33,7 @@ export const Deals = () => {
                     response.json()
                     .then((dataJson) => setDealList({games: dataJson, totalPages: parseInt(totalPages, 10), actualPage: parameters.pageNumber}))
                 })
+            setIsLoading({boolean: false, array: isLoading.array});
         } catch(err){console.error(err)}
     }
 
@@ -43,10 +54,17 @@ export const Deals = () => {
 
     useEffect(()=>{
         fetchDealsList();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    // loading component
-    // pop up de filtros
+
+    // pop up de game individual (19 tiendas y botón mostrar más, pueden haber 2 estados, uno de la data total, y otro de 
+    // lo que se muestra (cada 5), y pushear 5 cada vez que se apriete el botón, si los lengths se igualan,
+    // desaparecer el botón.)
+    // responsive
+    // buscar svg de las tiendas
+    // pop up de filtros 
+    // footer
     // cambiar el botón en el carrusel por el componente button
     // espacios de margen horizontal en carrusel, navbar y bgimg cuando width > 1920
 
@@ -62,8 +80,19 @@ export const Deals = () => {
                 </div>
                 <SearchBar id='search-bar-deals'/>
                 <div className="game-deals-container">
-                    {dealList && dealList.games.map((obj) => {
-                        return <DealGame key={obj.dealID} img={obj.thumb} title={obj.title} store={obj.storeID} price={obj.salePrice}/>
+                    {isLoading.boolean ?
+                        isLoading.array.map((num)=>{
+                            return <Loading key={num}/>
+                        })
+                    : dealList && dealList.games.map((obj) => {
+                        return <DealGame
+                          key={obj.dealID}
+                          gameID={obj.gameID}
+                          img={obj.thumb}
+                          title={obj.title}
+                          store={obj.storeID}
+                          price={obj.salePrice}
+                        />
                     })}
                 </div>
             </div>
