@@ -27,8 +27,9 @@ const StoreCard = ({storeID, link, price, fullprice, savings}) => {
 }
 
 
-export const IndividualGame = ({img, title, gameID, handleClick, handleClose}) => {
+export const IndividualGame = ({img, title, gameID, handleClose}) => {
     const [dealsArray, setDealsArray] = useState();
+    const [indexDealsArray, setIndexDealsArray] = useState(3);
     const [isLoading, setIsLoading] = useState(false)
     
     const fetchGameDeals = async (id) => {
@@ -48,39 +49,55 @@ export const IndividualGame = ({img, title, gameID, handleClick, handleClose}) =
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+    const storeList = (index) => {
+        if (dealsArray) {
+            let results = [];
+            dealsArray.map((obj, objIndex) => {
+                if (index) setIndexDealsArray(index)
+                else if (objIndex <= indexDealsArray) {
+                    results.push(
+                        <StoreCard
+                            key={obj.storeID}
+                            storeID={obj.storeID}
+                            link={obj.dealID}
+                            price={obj.price}
+                            fullprice={obj.retailPrice}
+                            savings={obj.savings}
+                        />
+                    )
+                } else return
+            })
+            return(results.map((store) => {
+                return (store)
+            }))
+        }
+    }
+
     return(
         <div className="individual-game-container">
-            <div className="individual-game-transparent-bg"/>
-                <div className="individual-game-bg">
-                    <div className="title-btn">
-                        <div className="title">
-                            <h3>{title}</h3>
-                        </div>
-                        <CustomButton icon='close' handleClick={handleClose}/>
+            <div className="individual-game-transparent-bg" tabIndex={-1} onFocus={handleClose}/>
+            <div className="individual-game-bg">
+                <div className="title-btn">
+                    <div className="title">
+                        <h3>{title}</h3>
                     </div>
-                    <div className="game-img">
-                        <img src={img} alt=""/>
-                    </div>
-                    <ColorTitle label={'Tiendas'}/>
-                    {isLoading? 
-                        <>
-                            <Loading/>
-                            <Loading/>
-                        </>
-                    : dealsArray?.map((obj) => {
-                        return(
-                            <StoreCard
-                              key={obj.storeID}
-                              storeID={obj.storeID}
-                              link={obj.dealID}
-                              price={obj.price}
-                              fullprice={obj.retailPrice}
-                              savings={obj.savings}
-                            />
-                        )
-                    })}
-                    <CustomButton handleClick={handleClick} text="cargar más"/>
+                    <CustomButton icon='close' handleClick={handleClose}/>
                 </div>
+                <div className="game-img">
+                    <img src={img} alt=""/>
+                </div>
+                <ColorTitle label={'Tiendas'}/>
+                {isLoading? 
+                    <>
+                        <Loading/>
+                        <Loading/>
+                    </>
+                : storeList()}
+                {dealsArray?.length > indexDealsArray + 1 ?
+                    <CustomButton handleClick={() => storeList(indexDealsArray + 4)} text="cargar más"/>
+                    : null
+                }
+            </div>
         </div>
     )
 }

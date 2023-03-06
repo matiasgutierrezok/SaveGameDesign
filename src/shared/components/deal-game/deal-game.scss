@@ -1,102 +1,114 @@
+
 .deal-game{
-    width: 100%;
-    height: 100%;
+    // width: 100%;
+    // height: 100%;
     background-color: $bright2;
     border-radius: 12px;
     position: relative;
-    .game-img{
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
-        overflow: hidden;
+    .deal-game-container{
+        cursor: pointer;
+        width: 100%;
         height: 100%;
-        border-radius: 12px;
-        img{
-            width: 100%;
-            min-height: 100%;
-        }
-    }
-    .data-container{
-        width: calc(100% + 2px);
-        display: flex;
-        position: absolute;
-        bottom: -1px;
-        left: -1px;
-        .data{
-            width: 100%;
-            z-index: 2;
-            padding: 8px 9px 9px;
-            box-sizing: border-box;
-            p{
-                margin: unset;
-                color: $text-color-high;
-                font-size: 12px;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                word-break: break-all;
-                white-space: nowrap;
+        .game-img{
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            overflow: hidden;
+            height: 100%;
+            border-radius: 12px;
+            img{
+                width: 100%;
+                min-height: 100%;
             }
-            .title{
-                font-family: $text-font-medium;
-                margin-bottom: 8px;
-                max-height: 28px;
-                white-space: nowrap;
-                text-overflow: ellipsis;
-                overflow: hidden;
-                @supports (-webkit-line-clamp: 2) {
+        }
+        .data-container{
+            width: calc(100% + 2px);
+            display: flex;
+            position: absolute;
+            bottom: -1px;
+            left: -1px;
+            .data{
+                width: 100%;
+                z-index: 2;
+                padding: 8px 9px 9px;
+                box-sizing: border-box;
+                p{
+                    margin: unset;
+                    color: $text-color-high;
+                    font-size: 12px;
                     overflow: hidden;
                     text-overflow: ellipsis;
-                    white-space: initial;
-                    display: -webkit-box;
-                    -webkit-line-clamp: 2;
-                    -webkit-box-orient: vertical;
+                    word-break: break-all;
+                    white-space: nowrap;
                 }
-            }
-            .store-price{
-                display: flex;
-                justify-content: space-between;
-                align-items: flex-end;
-                width: 100%;
-                .store{
-                    max-width: 79px;
-                    padding-right: 8px;
-                }
-                .price{
-                    display: inline;
+                .title{
                     font-family: $text-font-medium;
-                    background-color: $redbrand;
-                    border-radius: 4px;
-                    padding: 4px;
+                    margin-bottom: 8px;
+                    max-height: 28px;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    @supports (-webkit-line-clamp: 2) {
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: initial;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                    }
                 }
-            }
-        }
-        .transparent-background{
-            background-color: rgba(0,0,0, 0.3);
-            border-radius: 0 0 12px 12px;
-            backdrop-filter: blur(10px);
-            width: 100%;
-            height: 100%;
-            position: absolute;
-        }
-    }
-    @media screen and (min-width:900px) {
-        .data-container{
-            .data{
-                padding: 8px 16px 16px;
-                p{font-size: clamp(12px, 2vw, 24px);}
-                .title{max-height: 160px;}
                 .store-price{
-                    .store{max-width: 170px;}
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-end;
+                    width: 100%;
+                    .store{
+                        max-width: 79px;
+                        padding-right: 8px;
+                    }
+                    .price{
+                        display: inline;
+                        font-family: $text-font-medium;
+                        background-color: $redbrand;
+                        border-radius: 4px;
+                        padding: 4px;
+                    }
+                }
+            }
+            .transparent-background{
+                background-color: rgba(0,0,0, 0.3);
+                border-radius: 0 0 12px 12px;
+                backdrop-filter: blur(10px);
+                width: 100%;
+                height: 100%;
+                position: absolute;
+            }
+        }
+        @media screen and (min-width:900px) {
+            .data-container{
+                .data{
+                    padding: 8px 16px 16px;
+                    p{font-size: clamp(12px, 2vw, 24px);}
+                    .title{max-height: 160px;}
+                    .store-price{
+                        .store{max-width: 170px;}
+                    }
                 }
             }
         }
-    }
-    @media screen and (min-width:1300px){
-        .data-container{
-            .data{
-                p{font-size: clamp(12px, 1.3vw, 24px);}
+        @media screen and (min-width:1300px){
+            .data-container{
+                .data{
+                    p{font-size: clamp(12px, 1.3vw, 24px);}
+                }
             }
+        
         }
-    
+    }
+    .deal-game-container:hover{
+        >.game-img{
+            filter: grayscale(1);
+            -webkit-filter: grayscale(1);
+        }
     }
 }

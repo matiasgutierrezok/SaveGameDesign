@@ -8,7 +8,7 @@ export const Navbar = () => {
     return (
         <div className="navbar">
             <img src={logo} alt="" className="logo"/>
-            <SearchBar/>
+            {/* <SearchBar/> */}
             <div className="buttons">
                 <Button id='home' variant="text">Home</Button>
                 <Button id='next' variant="text">What's next</Button>

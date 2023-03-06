@@ -57,13 +57,10 @@ export const Deals = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-
-    // pop up de game individual (19 tiendas y botón mostrar más, pueden haber 2 estados, uno de la data total, y otro de 
-    // lo que se muestra (cada 5), y pushear 5 cada vez que se apriete el botón, si los lengths se igualan,
-    // desaparecer el botón.)
+    // hover sobre las letras cortadas debería decirte el nombre completo
     // responsive
     // buscar svg de las tiendas
-    // pop up de filtros 
+    // pop up de filtros
     // footer
     // cambiar el botón en el carrusel por el componente button
     // espacios de margen horizontal en carrusel, navbar y bgimg cuando width > 1920

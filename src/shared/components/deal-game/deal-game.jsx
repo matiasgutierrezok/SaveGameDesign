@@ -23,6 +23,8 @@ export const storeIdToName = (storeID) => {
         case '31': return 'Blizzard';
         case '32': return 'AllYouPlay';
         case '33': return 'DLGamer';
+        case '34': return 'Noctre';
+        case '35': return 'DreamGame';
         default: return storeID;
     }
 }
@@ -33,8 +35,10 @@ export const DealGame = ({img, title, store, price, gameID}) => {
     return (
         <div className="deal-game">
             {isPopUpOpen? <IndividualGame img={img} title={title} gameID={gameID} handleClose={() => setIsPopUpOpen(false)}/>
-                : <>
-                    <div className="game-img" onClick={() => setIsPopUpOpen(true)}>
+                : null
+            }
+                <div className="deal-game-container" onClick={() => setIsPopUpOpen(true)}>
+                    <div className="game-img">
                         <img src={img} alt=""/>
                     </div>
                     <div className="data-container">
@@ -47,8 +51,7 @@ export const DealGame = ({img, title, store, price, gameID}) => {
                             </div>
                         </div>
                     </div>
-                </>
-            }
+                </div>
         </div>
     )
 }
