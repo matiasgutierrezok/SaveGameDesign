@@ -13,7 +13,7 @@ export const FreeGame = (props) => {
     }
 
     const date = (dateData) => {
-        if(dateData.length < 4) return dateData;
+        if(dateData.length < 4) return 'Sin fecha';
         let data = dateData;
         data = data.split(' ');
         let day = data[0];

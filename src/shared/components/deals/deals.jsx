@@ -58,8 +58,6 @@ export const Deals = () => {
     }, [])
 
     // hover sobre las letras cortadas debería decirte el nombre completo
-    // responsive
-    // buscar svg de las tiendas
     // pop up de filtros
     // footer
     // cambiar el botón en el carrusel por el componente button

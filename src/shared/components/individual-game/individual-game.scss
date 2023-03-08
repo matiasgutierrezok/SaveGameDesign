@@ -5,9 +5,6 @@
     z-index: 100;
     top: 0;
     left: 0;
-    overflow-y: scroll;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
     &::-webkit-scrollbar{display: none}
     .individual-game-transparent-bg{
         width: 100%;
@@ -76,6 +73,13 @@
             }
         }
         .color-title{margin-bottom: 16px}
+        .stores-list{
+            max-height: 360px;
+            overflow-y: scroll;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            &::-webkit-scrollbar{display: none}
+        }
         >.loading{
             width: 100%;
             height: 74px;
@@ -120,6 +124,13 @@
                 background-color: $bright1;
                 border-radius: 4px;
                 margin-right: 18px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .store-img{
+                    width: 35px;
+                    height: 35px;
+                }
             }
             .store-data{
                 font-size: 16px;
@@ -156,10 +167,70 @@
         >.btn-container{
             display: flex;
             justify-content: center;
-            margin: 16px 0 32px;
+            margin-top: 16px;
             #btn-cmp{
                 padding: 10px 6px;
                 line-height: normal;
+            }
+        }
+    }
+    @media (min-width: 520px) {
+        .individual-game-bg{
+            width: clamp(425px, 85vw, 648px);
+            top: 3%;
+            left: 0;
+            right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 25px 16px 32px;
+            .game-img{
+                height: 219px;
+            }
+            .store-card-container{
+                .store-data{
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    .store-title{
+                        margin-bottom: 0;
+                    }
+                    .store-price-data{
+                        flex-direction: row-reverse;
+                        align-items: center;
+                        justify-content: flex-start;
+                        width: auto;
+                        .store-price-savings{
+                            flex-direction: row-reverse;
+                            margin-left: 50px;
+                            .store-price{
+                                margin-left: 8px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @media (min-width: 1024px) {
+        .individual-game-bg{
+            width: clamp(648px, 85vw, 1097px);
+            padding: 24px;
+            .title-btn{
+                .title{
+                    h3{
+                        font-size: 24px;
+                        max-width: 1000px;
+                    }
+                }
+            }
+            .game-img{
+                height: 283px;
+            }
+            .color-title{margin-bottom: 23px}
+            .store-card-container{
+                .store-data{
+                    font-size: 20px;
+                }
             }
         }
     }

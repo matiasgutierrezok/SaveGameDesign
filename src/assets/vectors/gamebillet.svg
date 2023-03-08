@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <g id="gamebillet" transform="translate(-7737 -3068)">
+    <rect id="Rectángulo_1889" data-name="Rectángulo 1889" width="256" height="256" transform="translate(7737 3068)" fill="none"/>
+    <g id="Grupo_1680" data-name="Grupo 1680" transform="translate(0 -0.85)">
+      <path id="Unión_1" data-name="Unión 1" d="M45.086,158.474V134.387c31.427-.594,41.226-14.533,44.121-21.192H55.8a56.6,56.6,0,1,1,57.4-56.6v56.6h-.111c-1.8,27.8-25.236,45.279-53.875,45.279Z" transform="translate(7737 3140.873)" fill="#e0e0e0"/>
+      <path id="Unión_2" data-name="Unión 2" d="M92.3,163.695v-47.02H57.518a58.34,58.34,0,1,1,59.162-58.34v105.36Z" transform="translate(7993 3257.545) rotate(180)" fill="#e0e0e0"/>
+    </g>
+  </g>
+</svg>
