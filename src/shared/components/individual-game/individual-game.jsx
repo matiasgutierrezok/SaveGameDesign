@@ -85,7 +85,7 @@ export const IndividualGame = ({img, title, gameID, handleClose}) => {
     const [dealsArray, setDealsArray] = useState();
     const [indexDealsArray, setIndexDealsArray] = useState(3);
     const [isLoading, setIsLoading] = useState(false)
-    
+
     const fetchGameDeals = async (id) => {
         setIsLoading(true);
         const options = {method: 'GET'};

@@ -55,7 +55,7 @@ export const FreeGame = (props) => {
             <div className="divider"/>
             <IconButton id="exit" onClick={()=>props.shrinkItem()}><span className="material-icons md-24">close</span></IconButton>
             <div className="game-details">
-                <p className="transparent-bg">{props.obj.title}</p>
+                <p className="transparent-bg" title={props.obj.title}>{props.obj.title}</p>
                 <div className="details">
                     <div className="game-data-container">
                         <div className="game-exp">

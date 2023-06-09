@@ -1,0 +1,239 @@
+.filters-game-bg{
+    width: 320px;
+    min-height: 539px;
+    position: absolute;
+    z-index: 100;
+    top: 28px;
+    right: -19px;
+    background-color: $bright1;
+    box-shadow: 0 0 6px 3px $shadow;
+    border-radius: 12px;
+    padding: 19px 24px 19px;
+    box-sizing: border-box;
+    .filters-game-title-section{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 24px;
+        .btn-container{
+            #btn-cmp{
+                padding: 2px;
+                min-width: 24px;
+                .MuiButton-iconSizeMedium{
+                    margin: 0;
+                }
+            }
+            #btn-cmp:hover{
+                filter: brightness(0.8);
+            }
+        }
+    }
+    .filters{
+        padding-top: 24px;
+        border-top: 1px solid $bright2;
+        .filters-by-store{
+            margin-bottom: 24px;
+            position: relative;
+            #filters-store-see-more{
+                position: absolute;
+                bottom: 0;
+                left: 24px;
+                opacity: 0;
+                width: 60px;
+                height: 19px;
+                margin: 0;
+                cursor: pointer;
+            }
+            > span{
+                color: $text-color-medium;
+                padding-left: 24px;
+                text-decoration: underline;
+            }
+            > input[type=checkbox]:checked ~ .filters-store-list{
+                height: 270px;
+                overflow-y: scroll;
+                &::-webkit-scrollbar{display: none}
+            }
+            > input[type=checkbox]:checked ~ .test{
+                display: none;
+            }
+            > input[type=checkbox]:checked{
+                z-index: -1;
+                display: none;
+            }
+            ul{
+                height: 86px;
+                overflow: hidden;
+            }
+        }
+        .filters-by-price{
+            padding-bottom: 24px;
+            border-bottom: 1px solid $bright2;
+            margin-bottom: 32px;
+            ul{
+                margin-bottom: 24px;
+            }
+            .filters-price-inputs{
+                display: flex;
+                align-items: center;
+                padding-left: 24px;
+                input{
+                    width: 90px;
+                    height: 30px;
+                    border-radius: 8px;
+                    margin: 0;
+                    -webkit-appearance: none;
+                    appearance: none;
+                    background-color: $bright3;
+                    color: $text-color-high;
+                    border: 1px solid $bright2;
+                    box-sizing: border-box;
+                }
+                input::placeholder {
+                    color: $text-color-high;
+                    text-align: center;
+                }
+                input:focus-visible {
+                    border: 1px solid $text-color-medium;
+                    outline: none;
+                }
+                input:hover {
+                    border: 1px solid $text-color-medium;
+                }
+                span{
+                    color: $text-color-medium;
+                    padding: 0 17px;
+                }
+            }
+        }
+        h2{
+            all: unset;
+            color: $text-color-high;
+            font-family: 'RobotoMedium';
+            font-size: 16px;
+            display: block;
+            margin-bottom: 24px;
+        }
+        ul{
+            list-style: none;
+            margin: 0;
+            padding: 0 0 0 24px;
+            color: $text-color-medium;
+            li{
+                padding-bottom: 24px;
+                &:last-child{
+                    padding-bottom: 0;
+                }
+                label{
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    cursor: pointer;
+                    input[type="checkbox"]{
+                        margin: 0;
+                        width: 18px;
+                        height: 18px;
+                        -webkit-appearance: none;
+                        appearance: none;
+                        background-color: $bright1;
+                        color: $bright3;
+                        border: 1px solid $bright3;
+                        border-radius: 2px;
+                        display: grid;
+                        place-content: center;
+                        cursor: pointer;
+                    }
+                    input[type="checkbox"]::before {
+                        content: "";
+                        width: 14px;
+                        height: 14px;
+                        clip-path: polygon(16% 49%, 42% 71%, 85% 16%, 92% 24%, 44% 83%, 10% 56%);
+                        transform: scale(0);
+                        box-shadow: inset 16px 16px $bright3;
+                        background-color: CanvasText;
+                    }
+                    input[type="checkbox"]:checked::before {
+                        transform: scale(1);
+                    }
+                    input[type="checkbox"]:hover {
+                        border: 1px solid $text-color-medium;
+                    }
+                }
+            }
+        }
+        .filters-buttons{
+            display: flex;
+            justify-content: space-between;
+            button{
+                min-width: 131px;
+                max-width: 156px;
+                height: 40px;
+                box-sizing: border-box;
+                border-radius: 4px;
+                padding: 12px 0;
+                text-align: center;
+                font-size: 14px;
+                cursor: pointer;
+            }
+            button:hover{
+                filter: brightness(0.8);
+            }
+            .filters-outlined{
+                border: 1px solid $redbrand;
+                background-color: transparent;
+            }
+            .filters-filled{
+                border: none;
+                background-color: $redbrand;
+            }
+            button:focus-visible{
+                outline: none;
+            }
+        }
+    }
+}
+
+@media (min-width: 360px){
+    .filters-game-bg{
+        right: 0;
+    }
+}
+
+@media (min-width: 768px){
+    .filters-game-bg{
+        width: 360px;
+        .filters{
+            .filters-by-store{
+                #filters-store-see-more{
+                    width: 70px;
+                }
+                > span{
+                    font-size: 18px;
+                }
+                > input[type=checkbox]:checked ~ .filters-store-list{
+                    height: 244px;
+                }
+            }
+            .filters-by-price{
+                .filters-price-inputs{
+                    input{
+                        font-size: 16px;
+                    }
+                }
+            }
+            h2{
+                font-size: 20px;
+            }
+            ul{
+                font-size: 18px;
+            }
+            .filters-buttons{
+                gap: 10px;
+                button{
+                    font-size: 20px;
+                    width: 156px;
+                    padding: 8px 0;
+                }
+            }
+        }
+    }
+}

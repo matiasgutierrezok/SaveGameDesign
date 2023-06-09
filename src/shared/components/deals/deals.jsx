@@ -3,6 +3,7 @@ import { ColorTitle } from "../color-title/color-title";
 import { DealGame } from "../deal-game/deal-game";
 import SearchBar from "../search-bar/search-bar";
 import { Pagination } from "../pagination/pagination";
+import { FiltersGame } from "../filters-game/filters-game";
 
 export const Loading = () => {
     return(
@@ -17,6 +18,7 @@ export const Loading = () => {
 export const Deals = () => {
     const [dealList, setDealList] = useState()
     const [isLoading, setIsLoading] = useState({boolean:false, array:[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]})
+    const [isPopUpOpen, setIsPopUpOpen] = useState(false);
 
     const fetchDealsList = async (value) => {
         setIsLoading({boolean: true, array: isLoading.array});
@@ -57,11 +59,11 @@ export const Deals = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    // hover sobre las letras cortadas debería decirte el nombre completo
-    // pop up de filtros
+    // efecto filter bright en hover en deal-game
+    // efectos de aparición de los filtros
+    // pop up de filtros (funcionalidad)
     // footer
     // cambiar el botón en el carrusel por el componente button
-    // espacios de margen horizontal en carrusel, navbar y bgimg cuando width > 1920
 
     return (
         <div className="deals-container">
@@ -70,7 +72,14 @@ export const Deals = () => {
                     <ColorTitle label='Juegos en oferta'/>
                     <div className="icons-container">
                         {/* <div className="view"><span className="material-icons">view_module</span></div> */}
-                        <div className="filter"><span className="material-icons">filter_list</span></div>
+                        <div className="filter-container">
+                            {isPopUpOpen? <FiltersGame handleClose={() => setIsPopUpOpen(false)}/>
+                                : null
+                            }
+                            <div className="filter" onClick={() =>setIsPopUpOpen(!isPopUpOpen)}>
+                                <span className="material-icons">filter_list</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <SearchBar id='search-bar-deals'/>

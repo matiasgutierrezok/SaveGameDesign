@@ -139,7 +139,7 @@
   100% {transform: translateX(130%)}
 }
 
-@media screen and (min-width:600px) {
+@media (min-width:600px) {
   .carousel-container {
     margin: 0 clamp(30px, 7vw, 60px);
     .main {
@@ -157,7 +157,7 @@
   }
 }
 
-@media screen and (min-width:900px) {
+@media (min-width:900px) {
   .carousel-container {
     margin: 0 clamp(60px, 8vw, 140px);
     .main {
@@ -223,5 +223,12 @@
       left: 20px;
     }
     .loading {height: clamp(286px, 32vw, 467px)}
+  }
+}
+@media (min-width: 1921px) {
+  .carousel-container{
+    max-width: 1640px;
+    width: 100%;
+    margin: 0 auto;
   }
 }

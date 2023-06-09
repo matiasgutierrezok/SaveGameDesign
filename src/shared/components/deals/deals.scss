@@ -23,9 +23,18 @@
                     @include theme($deals: Icons);
                     padding-right: 3px;
                 }
+                .filter-container{
+                    position: relative;
+                }
                 .filter{
                     @include theme($deals: Icons);
-                    margin-left: 10px
+                    margin-left: 10px;
+                    box-shadow: $shadow1;
+                }
+                .filter:hover{
+                    cursor: pointer;
+                    background-color: $bright3;
+                    box-shadow: $shadow2;
                 }
             }
         }

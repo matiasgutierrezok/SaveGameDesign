@@ -10,13 +10,13 @@
     }
 }
 
-@media screen and (min-width:600px) {
+@media (min-width:600px) {
     .navbar{
         padding: 0 30px 0 73px;
     }
 }
 
-@media screen and (min-width:900px) {
+@media (min-width:900px) {
     .navbar{
         height: 85px;
         padding: 0 clamp(73px, 12vw, 140px);
@@ -41,5 +41,11 @@
         .hamburger-menu{
             display: none;
         }
+    }
+}
+
+@media (min-width: 1921px) {
+    .navbar {
+        padding: 40px calc(50% - 820px);
     }
 }

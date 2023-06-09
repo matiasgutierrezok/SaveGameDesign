@@ -44,9 +44,9 @@ export const DealGame = ({img, title, store, price, gameID}) => {
                     <div className="data-container">
                         <div className="transparent-background"/>
                         <div className="data">
-                            <p className="title">{title}</p>
+                            <p className="title" title={title}>{title}</p>
                             <div className="store-price">
-                                <p className="store">{storeIdToName(store)}</p>
+                                <p className="store" title={storeIdToName(store)}>{storeIdToName(store)}</p>
                                 <p className="price">${price}</p>
                             </div>
                         </div>

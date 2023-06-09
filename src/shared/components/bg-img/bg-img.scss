@@ -37,7 +37,7 @@
         }
     }
 }
-@media screen and (min-width:600px) {
+@media (min-width:600px) {
     .bg-home{
         margin-right: 60px;
         margin-left: 60px;
@@ -67,7 +67,7 @@
         }
     }
 }
-@media screen and (min-width:900px) {
+@media (min-width:900px) {
     .bg-home{
         margin: 37px 140px 0 140px;
         .title{
@@ -97,5 +97,12 @@
                 height: clamp(190px, 20vw, 282px);
             }
         }
+    }
+}
+@media (min-width: 1921px) {
+    .bg-home{
+        max-width: 1640px;
+        width: 100%;
+        margin: 37px auto;
     }
 }
