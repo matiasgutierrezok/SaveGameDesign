@@ -164,6 +164,11 @@
                 }
             }
         }
+        @media (pointer: fine){
+            .store-card-container:hover{
+                filter: brightness(0.6);
+            }
+        }
         >.btn-container{
             display: flex;
             justify-content: center;

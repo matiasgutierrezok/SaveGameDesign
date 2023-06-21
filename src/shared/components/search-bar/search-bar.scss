@@ -23,6 +23,7 @@
     #search-input{
         color: $text-color-high;
         padding: 0;
+        margin-left: 8px;
         &::placeholder{
             color: $text-color-disabled;
             opacity: 1;

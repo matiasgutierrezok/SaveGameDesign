@@ -28,13 +28,18 @@ export const CarouselFree = () => {
             await fetch('https://gamerpower.p.rapidapi.com/api/giveaways?type=game', options)
                 .then((response) => response.json())
                 .then(response => {
-                    let data = response;
-                    if(data.length >= 3 && data.length <= 6) {
-                        let index = data.length;
+                    let data = [];
+                    if(response.length >= 3 && response.length <= 6) {
+                        let index = response.length;
                         for(let i = 0; i < index; i++){
-                            data.push(data[i]);
+                            data.push(response[i]);
                         }
-                    };
+                    } else{
+                        response.forEach(obj => {
+                            if(obj.id === 1055 || obj.id === 842 || obj.id === 4 || obj.id === 441 || obj.id === 147 || obj.id === 146 || obj.id === 28 || obj.id === 37) return
+                            else data.push(obj);
+                        });
+                    }
                     setGamesData(data);
                     setIsLoading(false);
                 })

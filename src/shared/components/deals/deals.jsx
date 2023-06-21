@@ -16,25 +16,32 @@ export const Loading = () => {
 }
 
 export const Deals = () => {
-    const [dealList, setDealList] = useState()
-    const [isLoading, setIsLoading] = useState({boolean:false, array:[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]})
-    const [isPopUpOpen, setIsPopUpOpen] = useState(false);
+    const [dealList, setDealList] = useState();
+    const [filter, setFilter] = useState({});
+    const [search, setSearch] = useState();
+    const [isLoading, setIsLoading] = useState({boolean:false, array:[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]});
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const fetchDealsList = async (value) => {
         setIsLoading({boolean: true, array: isLoading.array});
         const options = {method: 'GET'};
         const parameters = {
             pageNumber: value? value : 0,
-            pageSize: '10',
-            lowerPrice: '0.01'
+            lowerPrice: filter?.lowerPrice ? filter.lowerPrice : 0.01,
+            sortBy: filter?.sortBy ? filter.sortBy : '',
+            desc: filter?.desc ? filter.desc : '',
         };
+        let url = `https://www.cheapshark.com/api/1.0/deals?pageNumber=${parameters.pageNumber}&pageSize=10&lowerPrice=${parameters.lowerPrice}&sortBy=${parameters.sortBy}&desc=${parameters.desc}`;
+        if(filter?.upperPrice) url = url + '&upperPrice=' + filter?.upperPrice;
+        if(filter?.storeID) url = url + '&storeID=' + filter?.storeID;
+        if(search && search !== '') url = url + '&title=' + search;
         try{
-            await fetch(`https://www.cheapshark.com/api/1.0/deals?pageNumber=${parameters.pageNumber}&pageSize=${parameters.pageSize}&lowerPrice=${parameters.lowerPrice}`, options)
+            await fetch(url, options)
                 .then((response) => {
                     const totalPages = response.headers.get('X-Total-Page-Count');
                     response.json()
                     .then((dataJson) => setDealList({games: dataJson, totalPages: parseInt(totalPages, 10), actualPage: parameters.pageNumber}))
-                })
+                });
             setIsLoading({boolean: false, array: isLoading.array});
         } catch(err){console.error(err)}
     }
@@ -51,19 +58,17 @@ export const Deals = () => {
     
     const handleClick = (value) => {
         if(dealList?.actualPage === value) return;
-        fetchDealsList(value)
+        fetchDealsList(value);
     }
 
     useEffect(()=>{
         fetchDealsList();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [filter, search])
 
-    // efecto filter bright en hover en deal-game
-    // efectos de aparición de los filtros
-    // pop up de filtros (funcionalidad)
+    // leyenda cuando no hay resultados de búsqueda o filtro
+    // leyenda 'tantos resultados para:' valor tipeado 
     // footer
-    // cambiar el botón en el carrusel por el componente button
 
     return (
         <div className="deals-container">
@@ -73,16 +78,21 @@ export const Deals = () => {
                     <div className="icons-container">
                         {/* <div className="view"><span className="material-icons">view_module</span></div> */}
                         <div className="filter-container">
-                            {isPopUpOpen? <FiltersGame handleClose={() => setIsPopUpOpen(false)}/>
+                            {isModalOpen? 
+                            <FiltersGame
+                                selectedFilters={filter}
+                                handleFilter={setFilter}
+                                handleClose={() => setIsModalOpen(false)}
+                            />
                                 : null
                             }
-                            <div className="filter" onClick={() =>setIsPopUpOpen(!isPopUpOpen)}>
+                            <div className="filter" onClick={() => setIsModalOpen(!isModalOpen)}>
                                 <span className="material-icons">filter_list</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <SearchBar id='search-bar-deals'/>
+                <SearchBar id='search-bar-deals' searched={search} handleSearch={setSearch}/>
                 <div className="game-deals-container">
                     {isLoading.boolean ?
                         isLoading.array.map((num)=>{
