@@ -66,8 +66,6 @@ export const Deals = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [filter, search])
 
-    // leyenda cuando no hay resultados de búsqueda o filtro
-    // leyenda 'tantos resultados para:' valor tipeado 
     // footer
 
     return (
@@ -93,6 +91,10 @@ export const Deals = () => {
                     </div>
                 </div>
                 <SearchBar id='search-bar-deals' searched={search} handleSearch={setSearch}/>
+                {dealList && dealList.games[0] === undefined && search ? <h2>No hay resultados para: "{search}"</h2>
+                    : dealList && dealList.games[0] === undefined ? <h2>No hay resultados que coincidan con esos filtros</h2>
+                    : ''
+                }
                 <div className="game-deals-container">
                     {isLoading.boolean ?
                         isLoading.array.map((num)=>{
