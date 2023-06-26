@@ -2,7 +2,7 @@ import { Button } from "@mui/material";
 import React from "react";
 import logo from '../../../assets/vectors/logo.svg';
 import BasicMenu from "../hamburger-menu/hamburger-menu";
-import SearchBar from "../search-bar/search-bar";
+// import SearchBar from "../search-bar/search-bar";
 
 export const Navbar = () => {
     return (

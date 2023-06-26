@@ -107,9 +107,9 @@ export const IndividualGame = ({img, title, gameID, handleClose}) => {
         if (dealsArray) {
             let results = [];
             dealsArray.map((obj, objIndex) => {
-                if (index) setIndexDealsArray(index)
+                if (index) return setIndexDealsArray(index)
                 else if (objIndex <= indexDealsArray) {
-                    results.push(
+                    return results.push(
                         <StoreCard
                             key={obj.storeID}
                             storeID={obj.storeID}
@@ -119,7 +119,7 @@ export const IndividualGame = ({img, title, gameID, handleClose}) => {
                             savings={obj.savings}
                         />
                     )
-                } else return
+                } else return ''
             })
             return(results.map((store) => {
                 return (store)

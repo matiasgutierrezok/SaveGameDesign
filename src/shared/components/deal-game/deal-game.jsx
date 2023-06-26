@@ -33,7 +33,7 @@ export const DealGame = ({img, title, store, price, gameID}) => {
     const [isPopUpOpen, setIsPopUpOpen] = useState(false);
 
     return (
-        <div className="deal-game">
+        <div className="deal-game" onKeyDownCapture={(e) =>e.key === 'Escape' ? setIsPopUpOpen(false) : ''} tabIndex="0">
             {isPopUpOpen? <IndividualGame img={img} title={title} gameID={gameID} handleClose={() => setIsPopUpOpen(false)}/>
                 : null
             }
