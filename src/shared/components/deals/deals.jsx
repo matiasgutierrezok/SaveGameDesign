@@ -66,8 +66,6 @@ export const Deals = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [filter, search])
 
-    // footer
-
     return (
         <div className="deals-container">
             <div className="deals">
