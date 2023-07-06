@@ -45,8 +45,10 @@ footer{
             min-height: 24px;
             min-width: 24px;
         }
-        a:hover{
-            filter: brightness(0.8);
+        @media (pointer: fine){
+            a:hover{
+                filter: brightness(0.8);
+            }
         }
     }
     .footer-navigaation{
@@ -55,7 +57,7 @@ footer{
         a{
             text-decoration: none;
             font-family: $text-font-medium;
-            font-size: 14px;
+            font-size: 16px;
             color: $text-color-medium;
             margin-bottom: 16px;
         }
@@ -63,7 +65,7 @@ footer{
     p{
         all: unset;
         display: block;
-        font-size: 12px;
+        font-size: 14px;
         color: $text-color-medium;
         padding-top: 24px;
         max-width: 482px;

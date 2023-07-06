@@ -33,9 +33,9 @@ export default function BasicMenu() {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={handleClose}>Inicio</MenuItem>
-        <MenuItem onClick={handleClose}>What's next</MenuItem>
-        <MenuItem onClick={handleClose}>Contacto</MenuItem>
+        <MenuItem component={Button} id='menu-home' href="/">Inicio</MenuItem>
+        <MenuItem component={Button} id='menu-next' href="/whats-next">What's next</MenuItem>
+        <MenuItem component={Button} id='menu-contact' href="/contact-me">Contacto</MenuItem>
       </Menu>
     </div>
   );

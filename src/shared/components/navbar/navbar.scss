@@ -9,6 +9,9 @@
         display: none;
     }
 }
+#menu-home, #menu-next, #menu-contact{
+    text-transform: none;
+}
 
 @media (min-width:600px) {
     .navbar{
@@ -33,7 +36,7 @@
             width: 274px;
             min-width: 233px;
             justify-content: space-between;
-            button{
+            a{
                 color: $text-color-high;
                 text-transform: none;
             }

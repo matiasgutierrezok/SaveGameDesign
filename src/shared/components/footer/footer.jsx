@@ -12,7 +12,7 @@ export const Footer = () => {
             <div className="title-container">
                 <h2>Diseñado y desarrollado por: Matias Gutierrez</h2>
                 <CustomButton
-                    handleClick={e => console.log('clickeado rey')}
+                    handleClick={e => window.scrollTo({top: 0, left: 0, behavior: 'smooth'})}
                     icon='arrow_upward'
                 />
             </div>
@@ -24,8 +24,9 @@ export const Footer = () => {
                 <a href="https://dribbble.com/matiasgutierrezok" target="_blank" rel="noreferrer" className="dribbble"><img src={dribbble} alt="dribbble" /></a>
             </div>
             <div className="footer-navigaation">
-                <a href="#">What's Next</a>
-                <a href="#">Contacto</a>
+                <a href="/">Inicio</a>
+                <a href="/whats-next">What's Next</a>
+                <a href="/contact-me">Contacto</a>
             </div>
             <p>Este proyecto fue desarrollado académicamente y no posee fines de lucro. Utiliza las APIs de <a href="https://www.gamerpower.com/" target="_blank" rel="noreferrer">GamePower</a> y <a href="https://www.cheapshark.com/" target="_blank" rel="noreferrer">CheapShark</a>, aunque no está asociado a ninguna empresa.</p>
             <hr/>
