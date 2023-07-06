@@ -42,7 +42,7 @@
             padding: 3px 4px;
             max-height: 40px;
             max-width: calc(100% - 8px);
-            margin-bottom: 16px;
+            margin-bottom: 32px;
             div{max-width: 100%;}
         }
         h2{
@@ -86,14 +86,15 @@
                 50% {transform: translateX(-85%)}
                 100% {transform: translateX(150%)}
             }
-            @media screen and (min-width:484px) and (max-width:1299px) {
+            @media (min-width:484px) and (max-width:1299px) {
                 .deal-game:last-child{display: none}
                 .loading:last-child{display: none}
             }
         }
     }
     
-    @media screen and (min-width:900px) {
+    @media (min-width:900px) {
+        margin-bottom: 120px;
         .deals{
             padding: 40px clamp(30px, 8vw, 140px);
             .game-deals-container{
@@ -104,13 +105,13 @@
         }
     }
     
-    @media screen and (min-width:1300px) and (max-width:1920px){
+    @media (min-width:1300px) and (max-width:1920px){
         .deals{
             .game-deals-container{grid-template-columns: repeat(5, 1fr)}
         }
     }
     
-    @media screen and (min-width:1921px){
+    @media (min-width:1921px){
         .deals{
             padding: 40px calc(50% - 1640px /2);
             .game-deals-container{grid-template-columns: repeat(5, 312px)}

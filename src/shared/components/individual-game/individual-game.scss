@@ -34,8 +34,8 @@
                     font-size: 20px;
                     font-family: $text-font-medium;
                     color: $text-color-high;
-                    max-width: 274px;
-                    max-height: 48px;
+                    max-width: calc(100% - 24px);
+                    max-height: fit-content;
                     overflow: hidden;
                     white-space: nowrap;
                     text-overflow: ellipsis;
@@ -224,7 +224,6 @@
                 .title{
                     h3{
                         font-size: 24px;
-                        max-width: 1000px;
                     }
                 }
             }

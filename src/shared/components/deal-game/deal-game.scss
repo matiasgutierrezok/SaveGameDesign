@@ -33,7 +33,7 @@
                 p{
                     margin: unset;
                     color: $text-color-high;
-                    font-size: 12px;
+                    font-size: 14px;
                     overflow: hidden;
                     text-overflow: ellipsis;
                     word-break: break-all;
@@ -42,7 +42,7 @@
                 .title{
                     font-family: $text-font-medium;
                     margin-bottom: 8px;
-                    max-height: 28px;
+                    max-height: 34px;
                     white-space: nowrap;
                     text-overflow: ellipsis;
                     overflow: hidden;
@@ -61,7 +61,6 @@
                     align-items: flex-end;
                     width: 100%;
                     .store{
-                        max-width: 79px;
                         padding-right: 8px;
                     }
                     .price{
@@ -87,18 +86,15 @@
             .data-container{
                 .data{
                     padding: 8px 16px 16px;
-                    p{font-size: clamp(12px, 2vw, 24px);}
+                    p{font-size: clamp(14px, 2vw, 24px);}
                     .title{max-height: 160px;}
-                    .store-price{
-                        .store{max-width: 170px;}
-                    }
                 }
             }
         }
         @media (min-width:1300px){
             .data-container{
                 .data{
-                    p{font-size: clamp(12px, 1.3vw, 20px);}
+                    p{font-size: clamp(14px, 1.3vw, 20px);}
                 }
             }
         
