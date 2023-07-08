@@ -1,0 +1,96 @@
+.contact-me-body{
+    max-width: 282px;
+    margin: 0 auto;
+    padding-top: 32px;
+    box-sizing: border-box;
+    height: calc(100vh - 58px - 309px);
+    min-height: 449px;
+    h1{
+        all: unset;
+        display: block;
+        font-family: $text-font-medium;
+        font-size: 16px;
+        margin-left: 19px;
+    }
+    .contact-me-bg{
+        width: 282px;
+        padding: 16px;
+        box-sizing: border-box;
+        border-radius: 12px;
+        background: $bright1;
+        margin-top: 40px;
+        margin-bottom: 30px;
+        .color-title{
+            margin-bottom: 16px;
+        }
+        a{
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: $text-color-high;
+            text-decoration: none;
+            max-width: fit-content;
+            img{
+                background: #585858;
+                padding: 4px;
+                border-radius: 4px;
+                margin-right: 8px;
+                max-width: 24px;
+                max-height: 24px;
+                box-sizing: border-box;
+            }
+        }
+        hr{
+            border: 1px solid $bright2;
+            margin: 16px 0;
+        }
+        @media(pointer: fine){
+            a:hover{
+                filter: brightness(0.8);
+            }
+        }
+    }
+    .contact-me-bg:last-of-type{
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
+
+@media (min-width: 768px){
+    .contact-me-body{
+        height: calc(100vh - 85px - 282px);
+        padding-top: 68px;
+        padding-bottom: 159px;
+        max-width: 482px;
+        min-height: 666px;
+        h1{
+            font-size: 32px;
+            margin-left: -45px;
+        }
+        .contact-me-bg{
+            margin-top: 60px;
+            margin-bottom: 60px;
+            width: 482px;
+            a img{
+                margin-right: 16px;
+            }
+        }
+    }
+}
+
+@media (min-width: 1920px){
+    .contact-me-body{
+        height: calc(100vh - 85px - 282px);
+        padding-top: 114px;
+        padding-bottom: 120px;
+        max-width: 812px;
+        min-height: 833px;
+        h1{
+            margin-left: -268px;
+        }
+        .contact-me-bg{
+            margin-top: 181px;
+            width: 812px;
+        }
+    }
+}
