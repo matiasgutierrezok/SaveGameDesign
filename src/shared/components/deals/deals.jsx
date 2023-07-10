@@ -66,6 +66,9 @@ export const Deals = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [filter, search])
 
+    //condicional antes de hacer el request de la data, que sea:
+    //leer el size de la screen por js y si es menor a 484 pida 16 pageSize y si es mayor, pida 15
+
     return (
         <div className="deals-container">
             <div className="deals">
