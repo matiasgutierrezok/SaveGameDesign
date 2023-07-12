@@ -40,6 +40,8 @@ export const CarouselFree = () => {
                             else data.push(obj);
                         });
                     }
+                    data.unshift(data.pop());
+                    data.unshift(data.pop());
                     setGamesData(data);
                     setIsLoading(false);
                 })

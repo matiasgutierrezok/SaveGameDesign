@@ -66,7 +66,6 @@ export const Deals = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [filter, search])
 
-    // un unshift.push(array.pop()) dos veces para agregar los últimos dos resultados del arreglo al principio, asi el más relevante se ve ni bien carga el sitio y no después de que de toda la vuelta
     // condicional antes de hacer el request de la data, que sea: window.innerWidth || document.body.clientWidth;
     // leer el size de la screen por js y si es menor a 484 pida 16 pageSize y si es mayor, pida 15
 
