@@ -86,10 +86,6 @@
                 50% {transform: translateX(-85%)}
                 100% {transform: translateX(150%)}
             }
-            @media (min-width:484px) and (max-width:1299px) {
-                .deal-game:last-child{display: none}
-                .loading:last-child{display: none}
-            }
         }
     }
     

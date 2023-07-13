@@ -27,11 +27,12 @@ export const Deals = () => {
         const options = {method: 'GET'};
         const parameters = {
             pageNumber: value? value : 0,
+            pageSize: window.innerWidth < 484 ? 16 : 15,
             lowerPrice: filter?.lowerPrice ? filter.lowerPrice : 0.01,
             sortBy: filter?.sortBy ? filter.sortBy : '',
             desc: filter?.desc ? filter.desc : '',
         };
-        let url = `https://www.cheapshark.com/api/1.0/deals?pageNumber=${parameters.pageNumber}&pageSize=10&lowerPrice=${parameters.lowerPrice}&sortBy=${parameters.sortBy}&desc=${parameters.desc}`;
+        let url = `https://www.cheapshark.com/api/1.0/deals?pageNumber=${parameters.pageNumber}&pageSize=${parameters.pageSize}&lowerPrice=${parameters.lowerPrice}&sortBy=${parameters.sortBy}&desc=${parameters.desc}`;
         if(filter?.upperPrice) url = url + '&upperPrice=' + filter?.upperPrice;
         if(filter?.storeID) url = url + '&storeID=' + filter?.storeID;
         if(search && search !== '') url = url + '&title=' + search;
@@ -66,9 +67,6 @@ export const Deals = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [filter, search])
 
-    // condicional antes de hacer el request de la data, que sea: window.innerWidth || document.body.clientWidth;
-    // leer el size de la screen por js y si es menor a 484 pida 16 pageSize y si es mayor, pida 15
-
     return (
         <div className="deals-container">
             <div className="deals">
@@ -98,8 +96,8 @@ export const Deals = () => {
                 }
                 <div className="game-deals-container">
                     {isLoading.boolean ?
-                        isLoading.array.map((num)=>{
-                            return <Loading key={num}/>
+                        isLoading.array.map(()=>{
+                            return <Loading/>
                         })
                     : dealList && dealList.games.map((obj) => {
                         return <DealGame
