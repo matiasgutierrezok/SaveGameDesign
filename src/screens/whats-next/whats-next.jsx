@@ -106,6 +106,7 @@ export const WhatsNext = () => {
                         </li>
                     </ul>
                 </div>
+                <p>¡Psst! Si ves esta sección con diferentes tamaños de ventana, podés ver cómo serían los diseños para esos tamaños</p>
             </div>
             <Footer/>
         </>

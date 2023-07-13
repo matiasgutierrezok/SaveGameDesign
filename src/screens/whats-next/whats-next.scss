@@ -21,6 +21,9 @@
             font-family: $text-font-medium;
         }
     }
+    p:last-of-type{
+        margin-bottom: 0;
+    }
     .next-changes{
         padding: 16px;
         box-sizing: border-box;
