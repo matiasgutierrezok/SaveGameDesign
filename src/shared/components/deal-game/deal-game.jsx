@@ -29,12 +29,12 @@ export const storeIdToName = (storeID) => {
     }
 }
 
-export const DealGame = ({img, title, store, price, gameID}) => {
+export const DealGame = ({img, title, store, price, fullPrice}) => {
     const [isPopUpOpen, setIsPopUpOpen] = useState(false);
 
     return (
         <div className="deal-game" onKeyDownCapture={(e) =>e.key === 'Escape' ? setIsPopUpOpen(false) : ''} tabIndex="0">
-            {isPopUpOpen? <IndividualGame img={img} title={title} gameID={gameID} handleClose={() => setIsPopUpOpen(false)}/>
+            {isPopUpOpen? <IndividualGame img={img} title={title} price={price} fullPrice={fullPrice} handleClose={() => setIsPopUpOpen(false)}/>
                 : null
             }
                 <div className="deal-game-container" onClick={() => setIsPopUpOpen(true)}>

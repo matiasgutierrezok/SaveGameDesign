@@ -3,11 +3,10 @@ import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import { Button } from '@mui/material';
 
-export default function CustomizedInputBase({searched, handleSearch}) {
+export default function CustomizedInputBase() {
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(e.target[1].value === '') handleSearch();
-    handleSearch(e.target[1].value)
+    alert('Visitá https://savegame.vercel.app/ para ver el sitio funcional');
   }
 
   return (
@@ -27,8 +26,6 @@ export default function CustomizedInputBase({searched, handleSearch}) {
         maxLength="120"
         sx={{ ml: 1, flex: 1 }}
         placeholder="Buscar un juego"
-        defaultValue={searched ? searched : ''}
-        // inputProps={{ 'aria-label': 'search google maps' }}
       />
     </Paper>
   );

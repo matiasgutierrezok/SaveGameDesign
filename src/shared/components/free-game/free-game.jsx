@@ -32,11 +32,21 @@ export const FreeGame = (props) => {
             store = store.replace('DRM-Free, ', '');
             return(
                 <div className="game-platform-store store-icons">
-                    <span className="material-icons md-24 transparent-bg">computer</span>
+                    <div className="transparent-bg-container">
+                        <span className="material-icons md-24">computer</span>
+                        <div className="transparent-bg"></div>
+                    </div>
                     {store === 'Epic Games Store' || store === 'Steam' ?
-                        <img src={store === 'Steam' ? steam : epic} alt="" className="transparent-bg"/>
+                        <div className="transparent-bg-container">
+                            <img src={store === 'Steam' ? steam : epic} alt=""/>
+                            <div className="transparent-bg"></div>
+                        </div>
                         : store === 'DRM-Free' ? ''
-                        : <p className="game-store transparent-bg">{store}</p>
+                        : 
+                        <div className="transparent-bg-container">
+                            <p className="game-store">{store}</p>
+                            <div className="transparent-bg"></div>
+                        </div>
                     }
                 </div>
             )
@@ -55,11 +65,17 @@ export const FreeGame = (props) => {
             <div className="divider"/>
             <IconButton id="exit" onClick={()=>props.shrinkItem()}><span className="material-icons md-24">close</span></IconButton>
             <div className="game-details">
-                <p className="transparent-bg" title={props.obj.title}>{props.obj.title}</p>
+                <div className="transparent-bg-container">
+                    <p title={props.obj.title}>{props.obj.title}</p>
+                    <div className="transparent-bg"></div>
+                </div>
                 <div className="details">
                     <div className="game-data-container">
                         <div className="game-exp">
-                            <p className="transparent-bg">Hasta:</p>
+                            <div className="transparent-bg-container">
+                                <p>Hasta:</p>
+                                <div className="transparent-bg"></div>
+                            </div>
                             <p className="game-date">{date(props.obj.end_date)}</p>
                         </div>
                         {platform(props.obj.platforms)}
@@ -68,7 +84,7 @@ export const FreeGame = (props) => {
                         <Button
                          variant="contained"
                          id='btn-go'
-                         onClick={() => window.open(props.obj.open_giveaway, '_blank').focus()}
+                         onClick={() => alert("Visitá https://savegame.vercel.app/ para ver el sitio funcional")}
                          endIcon={<span className="material-icons md-24">launch</span>}
                         >
                             ver tienda

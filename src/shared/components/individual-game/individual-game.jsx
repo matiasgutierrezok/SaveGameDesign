@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { CustomButton } from "../button/button";
 import { ColorTitle } from "../color-title/color-title";
 import { storeIdToName } from "../deal-game/deal-game";
-import { Loading } from "../deals/deals";
 import Steam from "../../../assets/vectors/steam.svg";
 import GamersGate from "../../../assets/vectors/gamersgate.svg";
 import GreenManGaming from "../../../assets/vectors/green man gaming.svg";
@@ -56,13 +55,9 @@ export const storeNameToSvg = (storeName) => {
     }
 }
 
-const StoreCard = ({storeID, link, price, fullprice, savings}) => {
-    let url = `https://www.cheapshark.com/redirect?dealID=${link}`;
-    let moneySaved;
-    if(savings[1] === '.') moneySaved = '- ' + savings.slice(0, 1) + '%'
-    else moneySaved = '- ' + savings.slice(0, 2) + '%'
+const StoreCard = ({storeID, price, fullPrice, savings}) => {
     return (
-        <div className="store-card-container" onClick={() => window.open(url, '_blank').focus()}>
+        <div className="store-card-container" onClick={() => alert('Para ver ofertas REALES, visita https://savegame.vercel.app/')}>
             <div className="store-img-bg">
                 <img src={storeNameToSvg(storeID)} alt="" className="store-img"/>
             </div>
@@ -71,9 +66,9 @@ const StoreCard = ({storeID, link, price, fullprice, savings}) => {
                 <div className="store-price-data">
                     <div className="store-price-savings">
                         <div className="store-price">{'$' + price}</div>
-                        <div className="store-fullprice">{'$' + fullprice}</div>
+                        <div className="store-fullprice">{'$' + fullPrice}</div>
                     </div>
-                    <div className="store-savings">{moneySaved}</div>
+                    <div className="store-savings">{savings}</div>
                 </div>
             </div>
         </div>
@@ -81,27 +76,172 @@ const StoreCard = ({storeID, link, price, fullprice, savings}) => {
 }
 
 
-export const IndividualGame = ({img, title, gameID, handleClose}) => {
-    const [dealsArray, setDealsArray] = useState();
+export const IndividualGame = ({img, title, handleClose, price, fullPrice}) => {
     const [indexDealsArray, setIndexDealsArray] = useState(3);
-    const [isLoading, setIsLoading] = useState(false)
 
-    const fetchGameDeals = async (id) => {
-        setIsLoading(true);
-        const options = {method: 'GET'};
-        const parameters = {id: id};
-        try{
-            await fetch(`https://www.cheapshark.com/api/1.0/games?id=${parameters.id}`, options)
-                .then((response) => response.json())
-                .then((dataJson) => setDealsArray(dataJson.deals))
-            setIsLoading(false);
-        } catch(err){console.error(err)}
-    }
-
-    useEffect(() => {
-        fetchGameDeals(gameID);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    let dealsArray = [
+        {   
+            key: 1,
+            storeID: '1',
+            price: price,
+            fullPrice: fullPrice,
+            savings: '-40%'
+        },
+        {
+            key : 2,
+            storeID : '2',
+            price : price,
+            fullPrice : fullPrice,
+            savings : '-40%'
+        },
+        {
+            key : 3,
+            storeID : '3',
+            price : price,
+            fullPrice : fullPrice,
+            savings : '-40%'
+        },
+        {
+            key : 6,
+            storeID : '6',
+            price : price,
+            fullPrice : fullPrice,
+            savings : '-40%'
+        },
+        {
+            key : 7,
+            storeID : '7',
+            price : price,
+            fullPrice : fullPrice,
+            savings : '-40%'
+        },
+        {
+            key : 8,
+            storeID : '8',
+            price : price,
+            fullPrice : fullPrice,
+            savings : '-40%'
+        },
+        {
+            key : 11,
+            storeID : '11',
+            price : price,
+            fullPrice : fullPrice,
+            savings : '-40%'
+        },
+        {
+            key : 13,
+            storeID : '13',
+            price : price,
+            fullPrice : fullPrice,
+            savings : '-40%'
+        },
+        {
+            key : 15,
+            storeID : '15',
+            price : price,
+            fullPrice : fullPrice,
+            savings : '-40%'
+        },
+        {
+            key : 21,
+            storeID : '21',
+            price : price,
+            fullPrice : fullPrice,
+            savings : '-40%'
+        },
+        {
+            key : 23,
+            storeID : '23',
+            price : price,
+            fullPrice : fullPrice,
+            savings : '-40%'
+        },
+        {
+            key : 24,
+            storeID : '24',
+            price : price,
+            fullPrice : fullPrice,
+            savings : '-40%'
+        },
+        {
+            key : 25,
+            storeID : '25',
+            price : price,
+            fullPrice : fullPrice,
+            savings : '-40%'
+        },
+        {
+            key : 27,
+            storeID : '27',
+            price : price,
+            fullPrice : fullPrice,
+            savings : '-40%'
+        },
+        {
+            key : 28,
+            storeID : '28',
+            price : price,
+            fullPrice : fullPrice,
+            savings : '-40%'
+        },
+        {
+            key : 29,
+            storeID : '29',
+            price : price,
+            fullPrice : fullPrice,
+            savings : '-40%'
+        },
+        {
+            key : 30,
+            storeID : '30',
+            price : price,
+            fullPrice : fullPrice,
+            savings : '-40%'
+        },
+        {
+            key : 31,
+            storeID : '31',
+            price : price,
+            fullPrice : fullPrice,
+            savings : '-40%'
+        },
+        {
+            key : 32,
+            storeID : '32',
+            price : price,
+            fullPrice : fullPrice,
+            savings : '-40%'
+        },
+        {
+            key : 33,
+            storeID : '33',
+            price : price,
+            fullPrice : fullPrice,
+            savings : '-40%'
+        },
+        {
+            key : 34,
+            storeID : '34',
+            price : price,
+            fullPrice : fullPrice,
+            savings : '-40%'
+        },
+        {
+            key : 35,
+            storeID : '35',
+            price : price,
+            fullPrice : fullPrice,
+            savings : '-40%'
+        },
+        {
+            key : 36,
+            storeID : 'Tienda sin nombre',
+            price : price,
+            fullPrice : fullPrice,
+            savings : '-40%'
+        }
+    ];
 
     const storeList = (index) => {
         if (dealsArray) {
@@ -113,9 +253,8 @@ export const IndividualGame = ({img, title, gameID, handleClose}) => {
                         <StoreCard
                             key={obj.storeID}
                             storeID={obj.storeID}
-                            link={obj.dealID}
                             price={obj.price}
-                            fullprice={obj.retailPrice}
+                            fullPrice={obj.fullPrice}
                             savings={obj.savings}
                         />
                     )
@@ -141,16 +280,13 @@ export const IndividualGame = ({img, title, gameID, handleClose}) => {
                     <img src={img} alt=""/>
                 </div>
                 <ColorTitle label={'Tiendas'}/>
-                {isLoading? 
-                    <>
-                        <Loading/>
-                        <Loading/>
-                    </>
-                : <div className="stores-list">{storeList()}</div>}
+                <div className="stores-list">
+                    {storeList()}
+                </div>
                 {dealsArray?.length > indexDealsArray + 1 ?
                     window.screen.width < '425px' ?
-                    <CustomButton handleClick={() => storeList(indexDealsArray + 4)} text="cargar más"/>
-                    : <CustomButton handleClick={() => storeList(indexDealsArray + 4)} icon='chevron_right' text='cargar más'/>
+                    <CustomButton handleClick={() => storeList(indexDealsArray + 20)} text="cargar más"/>
+                    : <CustomButton handleClick={() => storeList(indexDealsArray + 20)} icon='chevron_right' text='cargar más'/>
                     : null
                 }
             </div>

@@ -67,8 +67,8 @@
           left: 0;
           bottom: 8px;
           max-width: 100%;
-          .transparent-bg {
-            backdrop-filter: blur(2px);
+          .transparent-bg-container {
+            width: fit-content;
             max-width: max-content;
           }
           p {
@@ -76,9 +76,15 @@
             width: auto;
             max-width: max-content;
             min-width: min-content;
-            margin-bottom: 8px;
+            margin: 0;
           }
-          .details {display: flex}
+          .details {
+            display: flex;
+            #btn-go{
+              padding: 6px 8px;
+              > span{display: none}
+            }
+          }
         }
       }
       .retract-next-element {clip-path: polygon(100% 0, 100% 0, 50% 100%, 50% 100%)}
@@ -148,7 +154,21 @@
           .game-details {
             .details {
               justify-content: flex-start;
-              .game-data-container {margin-right: 32px}
+              .game-data-container {margin-right: 32px};
+              #btn-go{
+                padding: 6px 16px;
+                > span{display: block}
+              }
+            }
+          }
+        }
+        .expand-element{
+          .game-details{
+            .details{
+              #btn-go{
+                padding: 6px 16px;
+                > span{display: flex}
+              }
             }
           }
         }
@@ -176,7 +196,12 @@
           }
           .game-details {
             padding: 0 16px;
-            p {margin-bottom: 16px}
+            .game-exp {margin-bottom: 16px}
+            .game-platform-store{
+              .transparent-bg-container{
+                max-height: 47px;
+              }
+            }
             #btn-go {
               font-size: 20px;
               span {font-size: 24px}

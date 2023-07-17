@@ -2,51 +2,60 @@ import React, { useState, useRef, useEffect } from "react";
 import { IconButton } from "@mui/material";
 import { ColorTitle } from "../color-title/color-title";
 import { FreeGame } from "../free-game/free-game";
+import game1 from "../../../assets/images/games/aa-Sims-4.webp"
+import game2 from "../../../assets/images/games/aa-Bloodlines-2.webp"
+import game3 from "../../../assets/images/games/ab-Dying-Light-2.webp"
+import game4 from "../../../assets/images/games/ac-Forza-Horizon-5.webp"
+import game5 from "../../../assets/images/games/aa-Assassin_s-Creed-Valhalla.webp"
 
 export const CarouselFree = () => {
     const [isDown, setIsDown] = useState(false);
     const [startX, setStartX] = useState();
     const [scrollLeft, setScrollLeft] = useState(0);
-    const [gamesData, setGamesData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     
     const carousel = useRef(null);
     const games = useRef({});
     const interval = useRef(null);
     const expanded = useRef(false);
-    
-    
-    const fetchGiveAways = async () => {
-        const options = {
-            method: 'GET',
-            headers: {
-                'X-RapidAPI-Host': 'gamerpower.p.rapidapi.com',
-                'X-RapidAPI-Key': 'dbcf3b4263msh59ffd3e6865769cp1c18fcjsn3777366e589d'
-            }
-        };
-        try{
-            await fetch('https://gamerpower.p.rapidapi.com/api/giveaways?type=game', options)
-                .then((response) => response.json())
-                .then(response => {
-                    let data = [];
-                    if(response.length >= 3 && response.length <= 6) {
-                        let index = response.length;
-                        for(let i = 0; i < index; i++){
-                            data.push(response[i]);
-                        }
-                    } else{
-                        response.forEach(obj => {
-                            if(obj.id === 1055 || obj.id === 842 || obj.id === 4 || obj.id === 441 || obj.id === 147 || obj.id === 146 || obj.id === 28 || obj.id === 37) return
-                            else data.push(obj);
-                        });
-                    }
-                    data.unshift(data.pop());
-                    data.unshift(data.pop());
-                    setGamesData(data);
-                    setIsLoading(false);
-                })
-        } catch(err){console.error(err)}
-    }
+
+    let gamesData = [
+        {
+            "id": 1,
+            "title": "Los Sims 4",
+            "image": game1,
+            "platforms": "PC, Epic Games Store",
+            "end_date": "2023-07-20 23:59:00",
+        },
+        {
+            "id": 2,
+            "title": "Bloodlines 2",
+            "image": game2,
+            "platforms": "PC, Steam",
+            "end_date": "2023-07-20 23:59:00",
+        },
+        {
+            "id": 3,
+            "title": "Dying Light 2",
+            "image": game3,
+            "platforms": "PC, Itch.io",
+            "end_date": "2023-07-20 23:59:00",
+        },
+        {
+            "id": 4,
+            "title": "Forza Horizon 5",
+            "image": game4,
+            "platforms": "PC, Indiegala",
+            "end_date": "2023-07-20 23:59:00",
+        },
+        {
+            "id": 5,
+            "title": "Assasin's Creed Valhalla",
+            "image": game5,
+            "platforms": "PC, Origin",
+            "end_date": "2023-07-20 23:59:00",
+        }
+    ];
 
     const mouseDown = (e) => {
         if (gamesData.length <= 2 || window.matchMedia('(pointer: coarse)').matches) return;
@@ -153,7 +162,7 @@ export const CarouselFree = () => {
                 interval.current = setInterval(() =>{
                     reposition(-1);
                 }, 3000);
-            } 
+            }
         }
     }
 
@@ -166,7 +175,7 @@ export const CarouselFree = () => {
             }, 0);
             autoMove(true);
         } else if(isLoading){
-            fetchGiveAways();
+            setIsLoading(false);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isLoading])

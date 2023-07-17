@@ -16,10 +16,10 @@
             #btn{display: block}
         }
     }
-    img{
-      width: 100%;
-      height: 100%;
-      transition: filter 300ms;
+    > img{
+        object-fit: cover;
+        object-position: center;
+        min-width: 100%;
     }
     .game-details{
         position: absolute;
@@ -31,18 +31,30 @@
         font-size: clamp(14px, 2vw, 24px);
         font-family: $text-font-medium;
         color: $text-color-high;
-        .transparent-bg{
-            border-radius: 4px;
-            background: rgba(88, 88, 88, 0.5);
+        .transparent-bg-container{
+            max-width: 40%;
+            width: fit-content;
             padding: 0 2px;
-        }
-        p{
-            max-width: fit-content;
-            width: 40%;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            margin: 0;
-            word-break: break-all;
+            position: relative;
+            p{
+                max-width: fit-content;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                margin: 0;
+                word-break: break-all;
+                z-index: 2;
+                position: relative;
+            }
+            .transparent-bg{
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                border-radius: 4px;
+                background: rgba(88, 88, 88, 0.5);
+                z-index: 0;
+            }
         }
         .details{
             display: none;
@@ -53,6 +65,7 @@
                 margin-right: 8px;
                 .game-exp{
                     display: flex;
+                    margin-bottom: 8px;
                     .game-date{
                         margin-left: clamp(8px, 2vw, 16px);
                         background-color: $redbrand;
@@ -65,22 +78,33 @@
                     align-items: center;
                 }
                 .game-platform-store{
-                    p{margin-bottom: 0}
+                    .transparent-bg-container{
+                        margin-right: clamp(8px, 2vw, 16px);
+                        padding: 0;
+                        max-height: 28px;
+                        p{
+                            margin-bottom: 0;
+                            padding: 0 2px;
+                        }
+                        span{
+                            font-size: 20px;
+                            padding: 4px;
+                            z-index: 2;
+                            position: relative;
+                        }
+                        img{
+                            color: $text-color-high;
+                            width: 20px;
+                            height: 20px;
+                            padding: 4px;
+                            position: relative;
+                            z-index: 2;
+                        }
+                    }
                 }
                 .game-store{
                     margin: 0;
                     &:last-child{margin-bottom: 0}
-                }
-                span{
-                    font-size: 20px;
-                    padding: 4px;
-                    margin-right: clamp(8px, 2vw, 16px);
-                }
-                img{
-                    color: $text-color-high;
-                    width: 20px;
-                    height: 20px;
-                    padding: 4px;
                 }
             }
             .btn-container{
@@ -139,7 +163,6 @@
         max-width: 100%;
         .transparent-bg{
           backdrop-filter: blur(2px);
-          max-width: max-content;
         }
         p{
           white-space: initial;

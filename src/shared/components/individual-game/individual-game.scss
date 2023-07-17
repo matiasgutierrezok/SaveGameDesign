@@ -28,7 +28,8 @@
             margin-bottom: 24px;
             gap: 8px;
             .title{
-                display: inline;
+                display: block;
+                width: 100%;
                 h3{
                     all: unset;
                     font-size: 20px;
@@ -61,7 +62,7 @@
         }
         .game-img{
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             justify-content: center;
             overflow: hidden;
             height: 157px;
@@ -75,10 +76,7 @@
         .color-title{margin-bottom: 16px}
         .stores-list{
             max-height: 360px;
-            overflow-y: scroll;
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-            &::-webkit-scrollbar{display: none}
+            overflow-y: auto;
         }
         >.loading{
             width: 100%;

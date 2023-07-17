@@ -103,7 +103,7 @@
     
     @media (min-width:1300px) and (max-width:1920px){
         .deals{
-            .game-deals-container{grid-template-columns: repeat(5, 1fr)}
+            .game-deals-container{grid-template-columns: repeat(5, minmax(202px, 1fr))}
         }
     }
     

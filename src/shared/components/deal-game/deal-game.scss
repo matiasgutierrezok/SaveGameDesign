@@ -1,4 +1,3 @@
-
 .deal-game{
     background-color: $bright2;
     border-radius: 12px;
@@ -15,8 +14,8 @@
             height: 100%;
             border-radius: 12px;
             img{
-                width: 100%;
-                min-height: 100%;
+                width: auto;
+                height: 100%;
             }
         }
         .data-container{

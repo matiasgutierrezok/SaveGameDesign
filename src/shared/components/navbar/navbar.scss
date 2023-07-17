@@ -5,12 +5,6 @@
     align-items: center;
     padding: 0 19px 0 35px;
     justify-content: space-between;
-    .buttons{
-        display: none;
-    }
-}
-#menu-home, #menu-next, #menu-contact{
-    text-transform: none;
 }
 
 @media (min-width:600px) {
@@ -24,26 +18,10 @@
         height: 85px;
         max-height: 85px;
         padding: 0 clamp(73px, 12vw, 140px);
-        #search-form{
-            max-width: clamp(156px, 21vw, 337px)
-        }
         .logo{
             width: 64px;
             height: 64px;
             margin-right: clamp(105px, 11vw, 210px);
-        }
-        .buttons{
-            display: flex;
-            width: 274px;
-            min-width: 233px;
-            justify-content: space-between;
-            a{
-                color: $text-color-high;
-                text-transform: none;
-            }
-        }
-        .hamburger-menu{
-            display: none;
         }
     }
 }
