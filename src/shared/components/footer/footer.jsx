@@ -23,11 +23,6 @@ export const Footer = () => {
                 <a href="https://www.behance.net/matiasgutierrezok" target="_blank" rel="noreferrer" className="behance"><img src={behance} alt="behance" /></a>
                 <a href="https://dribbble.com/matiasgutierrezok" target="_blank" rel="noreferrer" className="dribbble"><img src={dribbble} alt="dribbble" /></a>
             </div>
-            <div className="footer-navigaation">
-                <a href="/">Inicio</a>
-                <a href="/whats-next">What's Next</a>
-                <a href="/contact-me">Contacto</a>
-            </div>
             <p>Este proyecto fue desarrollado académicamente y no posee fines de lucro. Utiliza las APIs de <a href="https://www.gamerpower.com/" target="_blank" rel="noreferrer">GamePower</a> y <a href="https://www.cheapshark.com/" target="_blank" rel="noreferrer">CheapShark</a>, aunque no está asociado a ninguna empresa.</p>
             <hr/>
             <p>2023, Matias Gutierrez. Todos los derechos reservados. Otras marcas o nombres de productos son marcas comerciales de sus respectivos propietarios.</p>
