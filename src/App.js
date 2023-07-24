@@ -1,7 +1,8 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter, useRouteError } from 'react-router-dom';
 import './App.scss';
 import { HomeScr } from './screens/home-scr/home-scr';
 import { createTheme, ThemeProvider } from '@mui/material';
+import { Error404 } from './screens/error-404/error-404';
 
 const darkTheme = createTheme({
   palette: {
@@ -9,12 +10,19 @@ const darkTheme = createTheme({
   },
 });
 
+const ErrorBoundary = () => {
+  let error = useRouteError();
+  console.error(error);
+  return <Error404/>;
+}
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: (
       <HomeScr/>
     ),
+    errorElement: <ErrorBoundary/>,
   }
 ]);
 
